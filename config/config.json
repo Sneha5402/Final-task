@@ -2,22 +2,22 @@
   "development": {
     "username": "task",
     "password": "sneha",
-    "database": "database_development",
+    "database": "todo",
     "host": "127.0.0.1",
     "dialect": "mariadb"
   },
   "test": {
     "username": "task",
     "password": "sneha",
-    "database": "database_test",
+    "database": "todo",
     "host": "127.0.0.1",
     "dialect": "mariadb"
   },
   "production": {
     "username": "task",
     "password": "sneha",
-    "database": "database_production",
+    "database": "todo",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mariadb"
   }
 }

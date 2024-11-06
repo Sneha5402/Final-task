@@ -1,5 +1,9 @@
+// server.js
 const express = require('express');
 const path = require('path');
+const sequelize = require('./config/db'); 
+const User = require('./models/user');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -8,6 +12,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
@@ -22,12 +27,36 @@ app.post('/login', (req, res) => {
     res.redirect('/todo');
 });
 
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
     const { username, email, password, confirmPassword } = req.body;
-    console.log(`Username: ${username}, Email: ${email}, Password: ${password}, Confirm Password: ${confirmPassword}`);
-    res.redirect('/todo');
+
+    if (password !== confirmPassword) {
+        return res.send('Passwords do not match');
+    }
+
+    try {
+        // Save user data to the database
+        const newUser = await User.create({
+            username,
+            email: email,
+            password,
+        });
+        console.log('User created:', newUser);
+        res.send('Signup successful');
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).send('Error signing up');
+    }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Database connection and server startup
+sequelize.authenticate()
+    .then(() => {
+        console.log('Database connection has been established successfully.');
+        app.listen(PORT, () => {
+            console.log(`Server is running on http://localhost:${PORT}`);
+        });
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
