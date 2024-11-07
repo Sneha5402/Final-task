@@ -6,13 +6,15 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/user');
 const authRoutes = require('./routes/authRoutes');
 const { generateTokens } = require('./utils/tokens');
-const taskRoutes = require('./routes/taskRoutes');
-
+const Task = require('./models/task');
+const tasksRouter = require('./routes/tasks');
+// const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use('/auth', authRoutes);
+app.use('/api', tasksRouter);
 
 
 // Middleware to parse URL-encoded data
@@ -43,7 +45,7 @@ app.post('/signup', async (req, res) => {
             password, // Store the hashed password
         });
         console.log('User created:', newUser);
-        res.send('Signup successful');
+        res.redirect('/login');
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).send('Error signing up');
@@ -72,16 +74,6 @@ app.post('/login', async (req, res) => {
         user.refreshToken = refreshToken;
         await user.save();
 
-                // // Send both tokens in response
-                // res.json({
-                //     message: 'Login successful',
-                //     accessToken: accessToken,  // Send access token to client
-                //     refreshToken: refreshToken,  // Send refresh token in the response body
-                // });
-
-        // // Send tokens in response (store accessToken in a cookie, or handle on client-side)
-        // res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-               
         res.cookie('accessToken', accessToken, {
             httpOnly: false, // Typically, we don't need to store access token in cookies
         });
@@ -95,57 +87,33 @@ app.post('/login', async (req, res) => {
 
 
 
-// Route to get all users
-app.get('/users', async (req, res) => {
-    try {
-        // Fetch all users from the database
-        const users = await User.findAll();
-        res.json(users);
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).send('Error fetching users');
-    }
-});
-
-
-
 app.get('/todo', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'todo.html'));
 });
 
 
-// Use the task routes
-app.use('/api', taskRoutes);
+app.post('/tasks/create', async (req, res) => {
+    const { task, status } = req.body;
 
-// app.get('/api/tasks', (req, res) => {
-//     const userId = req.session.userId;
-  
-//     if (!userId) {
-//       return res.status(401).json({ error: 'Unauthorized' });
-//     }
-  
-//     const userTasks = tasks.filter(task => task.userId === userId); // Filter tasks by userId
-//     res.json(userTasks);
-//   });
-  
+    if (!task) {
+        return res.send('Task is required');
+    }
 
-// app.post('/api/tasks', (req, res) => {
-//     const { task } = req.body;
-//     const userId = req.session.userId; // Assuming the user ID is stored in the session
-  
-//     if (!userId) {
-//       return res.status(401).json({ error: 'Unauthorized' }); // If no user is logged in
-//     }
-  
-//     if (task) {
-//       const newTask = { task, userId, id: Date.now() }; // Add userId to the task
-//       tasks.push(newTask); // Store the task in memory (you'd store this in a real database)
-//       res.status(201).json(newTask); // Respond with the new task
-//     } else {
-//       res.status(400).json({ error: 'Task content is required' });
-//     }
-//   });
-  
+    try {
+        const newTask = await Task.create({
+            task,      
+            status,      
+        });
+        console.log('Task created:', newTask);
+        res.redirect('/todo');
+
+    } catch (error) {
+        console.error('Error creating task:', error);
+        res.status(500).send('Error creating task');
+    }
+});
+
+
 
 // Database connection and server startup
 sequelize.authenticate()

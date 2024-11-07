@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Task</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Create Task</title>
 </head>
+
 <body>
-    <h1>Create a New Task</h1>
-    <form action="/api/tasks" method="POST">
-        <label for="task">Task:</label>
-        <input type="text" id="task" name="task" required><br><br>
+    <div class="container">
+        <header><b>TO DO LIST</b></header>
+        <form action="/tasks/create" method="POST" class="text">
+            <input type="text" id="task" name="task" placeholder="Enter your task" required>
+            
+            <!-- <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="pending">Pending</option>
+                <option value="assigned">Assigned</option>
+                <option value="completed">Completed</option>
+            </select> -->
 
-        <label for="status">Status:</label>
-        <select id="status" name="status" required>
-            <option value="assigned">Assigned</option>
-            <option value="completed">Completed</option>
-            <option value="pending" selected>Pending</option>
-        </select><br><br>
+            <button type="submit" class="text-btn">Add Task</button>
+        </form>
 
-        <button type="submit">Create Task</button>
-    </form>
+        <!-- Field for showing the error message -->
+        <div class="error"></div>
+
+        <!-- Task filters -->
+        <div class="tabs">
+            <div class="filters">
+                <span id="all"><b>All</b>(<span id="allCount">0</span>)</span>
+                <span id="assigned"><b>Assigned</b> (<span id="assignedCount">0</span>)</span>
+                <span id="completed"><b>Completed</b> (<span id="completedCount">0</span>)</span>
+            </div>
+            <button class="clear-btn" type="button">Clear All</button>
+        </div>
+
+        <div class="todo-item">
+            <ul>
+                <!-- Tasks will be listed here -->
+            </ul>
+        </div>
+
+        <div class="no-tasks" style="display: none;">No tasks found</div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>

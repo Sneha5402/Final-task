@@ -1,75 +1,346 @@
-* {
+html,
+body {
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-/* Center the form in the middle of the page */
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-}
-
-/* Heading style */
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Form label and input field styling */
-label {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 5px;
-    display: block;
-}
-
-input[type="text"],
-select {
+    height: 100%;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+    background: radial-gradient(circle, #26d061 0%, #0e0c0c 100%);
 }
 
-input[type="text"]:focus,
-select:focus {
-    border-color: #007bff;
+/* Styling the container */
+.container {
+    box-sizing: border-box;
+    background: #ebffe8cf;
+    padding: 2%;
+    width: 30%;
+    height: 70%;
+    border-radius: 50px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+/* Styling the header */
+header {
+    text-align: center;
+    padding-bottom: 1%;
+    font-family: 'Times New Roman', serif;
+    font-size: x-large;
+    color: black;
+}
+
+/* Styling the test field */
+.text {
+    padding: 2%;
+    display: flex;
+}
+
+.text input[type="text"] {
+    width: 80%;
+    padding: 2%;
+    margin-bottom: 2%;
+    margin-right: 1%;
+    background-color: #b6d1b2;
+    color: black;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.text button {
+    cursor: pointer;
+    width: 20%;
+    padding: 1%;
+    margin-bottom: 2%;
+    background: linear-gradient(180deg, #31fd78, #0e0c0c);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+}
+
+/* Styling the error */
+.error {
+    text-align: center;
+    padding: 2%;
+    visibility: hidden;
+    height: 2%;
+    color: red;
+}
+
+/* Styling the filters */
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+}
+
+.tabs .filters span {
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 17px;
+}
+
+.clear-btn {
+    cursor: pointer;
+    padding: 2%;
+    background: linear-gradient(180deg, #31fd78, #0e0c0c);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+}
+
+
+/* color for active filters and counts */
+#allCount.filter-active,
+#assignedCount.filter-active,
+#completedCount.filter-active,
+.tabs .filters .filter-active {
+    color: #228429;
+    font-weight: bold;
+}
+
+#allCount,
+#assignedCount,
+#completedCount {
+    font-weight: bold;
+}
+
+.filter-count-active {
+    color:#228429;
+}
+
+
+/* Styling the list contents */
+.todo-item {
+    width: 100%;
+    padding: 1%;
+    height: 60%;
+    overflow-y: auto;
+
+}
+
+.no-tasks {
+    text-align: center;
+    color: #000;
+    font-size: larger;
+
+}
+
+.todo-item ul {
+    list-style-type: none;
+    width: 100%;
+    padding: 0%;
+
+}
+
+.todo-item li {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #b6d1b2;
+    margin-bottom: 5%;
+    padding: 0.2%;
+    border-radius: 7px;
+}
+
+.todo-item li span {
+    margin-right: 11%;
+    margin-left: 1.5%;
+    width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+    color: #121212;
+    border: black;
+}
+
+.todo-item li .button {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2%;
+    gap: 10%;
+    width: 30%;
+}
+
+input[type="text"] {
+    margin-left: 1.5%;
+    font-size: medium;
+    width: 67.5%;
+    background-color: #b6d1b2;
+    color: #0e0303;
+    border: none;
     outline: none;
 }
 
-/* Button styling */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+
+.complete-btn:hover {
+    background-color: #1db954;
+    transform: scale(1.2);
+}
+
+.task-text.completed {
+    color: #228429;
+}
+
+
+.complete-btn {
+    cursor: pointer;
     border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
+    background-color: transparent;
+    font-size: medium;
+    color: #000000;
+}
+
+.edit {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+}
+
+.edit:hover {
+    background-color: rgb(75, 75, 138);
+    transform: scale(1.2);
+}
+
+.edit-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+}
+
+.edit-btn:hover {
+    background-color: rgba(255, 0, 0, 0.411);
+    transform: scale(1.2);
+}
+
+.task-text {
+    color: #000;
+}
+
+li .checkbox {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+/* Media query */
+/* Laptop-1024px */
+
+@media only screen and (max-width: 1024px) {
+    .container {
+        width: 45%;
+        height: 62%;
+    }
+
+    .todo-item {
+        height: 60%;
+    }
+
+    .todo-item li span {
+        margin-right: 10%;
+    }
+
+    .todo-item li .button {
+        gap: 15%;
+        width: 30%;
+    }
 }
 
-br {
-    margin-bottom: 10px;
+/* Tablet-768px */
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 62%;
+    }
+
+    .tabs .filters span {
+        margin: 0 3px;
+        font-size: 17px;
+        width: 45%;
+    }
+
+    .todo-item ul {
+        width: 100%;
+    }
+
+    .todo-item li .button {
+        gap: 7%;
+        width: 25%;
+        padding: 2% 5%;
+    }
+}
+
+/* Mobile-425px */
+
+@media only screen and (max-width: 425px) {
+    .container {
+        width: 90%;
+        height: 63%;
+        padding: 3%;
+    }
+
+    .todo-item ul {
+        width: 95%;
+        padding: 1%;
+    }
+
+    .todo-item li {
+        width: 100%;
+    }
+
+    .todo-item li .button {
+        width: 34%;
+    }
+
+    .tabs .filters span {
+        margin: 0 2px;
+        font-size: 14px;
+        width: 50%;
+    }
+
+    .error {
+        font-size: small;
+        padding: 1%;
+    }
+
+    .todo-item ul {
+        width: 95%;
+    }
+
+    .todo-item li span {
+        margin-right: 0%;
+    }
+}
+
+
+/* Mobile-320px */
+@media only screen and (max-width: 320px) {
+    .tabs .filters span {
+        margin: 0 2px;
+        font-size: 13px;
+        width: 40%;
+    }
+
+    .clear-btn {
+        width: 26%;
+    }
+
+    .todo-item {
+        height: 50%;
+    }
+
+    .todo-item li span {
+        font-size: medium;
+    }
+
+    .todo-item li .button {
+        width: 40%;
+    }
+
+    .error {
+        font-size: small;
+    }
 }

@@ -1,9 +1,8 @@
-// Task.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');  
 
 const Task = sequelize.define('Tasks', {
-    taskid: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -18,18 +17,7 @@ const Task = sequelize.define('Tasks', {
         allowNull: false,
         defaultValue: 'pending', 
     },
-    createdBy: {
-        type: DataTypes.INTEGER,  
-        allowNull: true,
-        references: {
-            model: 'User',  
-            key: 'userid'
-        }
-    },
-    completedAt: {
-        type: DataTypes.DATE,
-        allowNull: true,  
-    }
+
 }, {
     timestamps: true,  
 });

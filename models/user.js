@@ -24,12 +24,10 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // Optional: If you store the access token here (not recommended for security)
     accessToken: {
         type: DataTypes.STRING, 
         allowNull: true
     },
-    // Refresh token can be stored in DB
     refreshToken: {
         type: DataTypes.STRING,
         allowNull: true
