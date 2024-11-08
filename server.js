@@ -13,6 +13,9 @@ const tasksRouter = require('./routes/tasks');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Middleware to parse incoming JSON data
+app.use(express.json());
+
 app.use('/auth', authRoutes);
 app.use('/api', tasksRouter);
 

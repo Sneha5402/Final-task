@@ -31,92 +31,53 @@ router.get('/tasks/:id', async (req, res) => {
     }
 });
 
-// Your routes should come after the middleware
-router.post('/tasks', async (req, res) => {
+router.put('/tasks/:id', async (req, res) => {
     try {
-        const { task, status } = req.body;  // Extract task details from the request body
+        const taskId = req.params.id;
+        const task = req.body.task;  // Directly access req.body.task
 
-        if (!task || !status) {
-            return res.status(400).json({ error: 'Task and status are required' });
+        console.log('Request Params:', req.params);   // Confirm taskId
+        console.log('Request Body:', req.body);       // Log the full body for troubleshooting
+        console.log('Extracted Task Value:', task);   // Check extracted task value
+
+        if (!task || typeof task !== 'string' || task.trim() === '') {
+            return res.status(400).json({ error: 'Task name cannot be empty or invalid' });
         }
 
-        const newTask = await Task.create({
-            task,
-            status
-        });
+        const [updated] = await Task.update({ task }, { where: { id: taskId } });
 
-        res.status(201).json(newTask);
-    } catch (error) {
-        console.error('Error creating task:', error);
-        res.status(500).json({ error: 'Unable to create task', details: error.message });
-    }
-});
-
-
-
-router.put('/api/tasks/:id', async (req, res) => {
-    const taskId = req.params.id;
-    try {
-        const task = await Task.findByPk(taskId);
-
-        if (!task) {
-            return res.status(404).json({ error: 'Task not found' }); // Return a proper error if task is not found
+        console.log('Update Result:', updated);  
+        if (updated === 0) {
+            return res.status(404).json({ error: 'Task not found' });
         }
 
-        task.task = req.body.task;  // Update task name (or any other property)
-        await task.save();
+        const updatedTask = await Task.findOne({ where: { id: taskId } });
+        res.json(updatedTask);
 
-        res.json(task);  // Send updated task as response
     } catch (error) {
         console.error('Error updating task:', error);
         res.status(500).json({ error: 'Unable to update task' });
     }
 });
 
-// Update task status
-router.put('/api/tasks/:id/status', async (req, res) => {
-    try {
-        const taskId = req.params.id;
-        const { status } = req.body;
 
-        console.log('Updating task ID:', taskId, 'New status:', status);  // Log status update
-        const updatedTask = await Task.update({ status }, {
-            where: { id: taskId }
-        });
 
-        if (updatedTask[0] === 0) {
-            console.log('Task not found with ID:', taskId);
-            return res.status(404).json({ error: 'Task not found' });
-        }
-
-        res.json({ id: taskId, status });
-    } catch (error) {
-        console.error('Error updating task status:', error);  // Log errors
-        res.status(500).json({ error: 'Error updating task status' });
-    }
-});
-
-// Delete task
-router.delete('/api/tasks/:id', async (req, res) => {
+// Route to delete a task
+router.delete('/tasks/:id', async (req, res) => {
     try {
         const taskId = req.params.id;
 
-        console.log('Deleting task with ID:', taskId);  // Log delete attempt
-        const deleted = await Task.destroy({
-            where: { id: taskId }
-        });
+        const deleted = await Task.destroy({ where: { id: taskId } });
 
-        if (deleted === 0) {
-            console.log('Task not found with ID:', taskId);
+        if (!deleted) {
             return res.status(404).json({ error: 'Task not found' });
         }
 
         res.json({ message: 'Task deleted successfully' });
     } catch (error) {
-        console.error('Error deleting task:', error);  // Log errors
-        res.status(500).json({ error: 'Error deleting task' });
+        console.error('Error deleting task:', error);
+        res.status(500).json({ error: 'Unable to delete task' });
     }
 });
-
 
 module.exports = router;

@@ -22,7 +22,7 @@ const Task = sequelize.define('Tasks', {
     timestamps: true,  
 });
 
-console.log(Task === sequelize.models.Task);
+// async function alterTls.Task);
 
 module.exports = Task;
 

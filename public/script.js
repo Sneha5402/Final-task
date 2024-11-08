@@ -40,31 +40,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function editTask(taskId, li) {
     const newTaskName = prompt('Edit task name:');
-    if (newTaskName) {
-        // Update in the UI
-        li.querySelector('.task-name').textContent = newTaskName;
+    console.log('New Task Name:', newTaskName);  // Log to verify value
 
-        // Update in the database
+    if (newTaskName) {
+        li.querySelector('.task-name').textContent = newTaskName;
         fetch(`http://localhost:3001/api/tasks/${taskId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ task: newTaskName })
+            body: JSON.stringify({  task: (newTaskName)}) 
         })
         .then(response => {
-            console.log('Response status:', response.status);  // Log the response status
-            return response.json();  // Parse the JSON response
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
         })
         .then(updatedTask => {
-            console.log('Task updated in database:', updatedTask);
+            console.log('Updated task from server:', updatedTask);
         })
         .catch(error => {
-            console.error('Error updating task:', error);  // Log the error if any
-            alert('Failed to update task');
+            console.error('Error updating task:', error);
         });
+        
+    } else {
+        console.error('New task name was not provided');
     }
 }
+
 // Function to delete task
 function deleteTask(taskId, li) {
     if (confirm('Are you sure you want to delete this task?')) {
@@ -83,25 +87,25 @@ function deleteTask(taskId, li) {
     }
 }
 
-// Function to toggle task status
-function toggleStatus(taskId, li) {
-    const currentStatus = li.querySelector('.task-status').textContent;
-    const newStatus = currentStatus === 'pending' ? 'assigned' : (currentStatus === 'assigned' ? 'completed' : 'pending');
+// // Function to toggle task status
+// function toggleStatus(taskId, li) {
+//     const currentStatus = li.querySelector('.task-status').textContent;
+//     const newStatus = currentStatus === 'pending' ? 'assigned' : (currentStatus === 'assigned' ? 'completed' : 'pending');
 
-    // Update in the UI
-    li.querySelector('.task-status').textContent = newStatus;
+//     // Update in the UI
+//     li.querySelector('.task-status').textContent = newStatus;
 
-    // Update in the database
-    fetch(`http://localhost:3001/api/tasks/${taskId}/status`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status: newStatus })
-    })
-        .then(response => response.json())
-        .then(updatedTask => {
-            console.log('Task status updated in database:', updatedTask);
-        })
-        .catch(error => console.error('Error updating task status:', error));
-}
+//     // Update in the database
+//     fetch(`http://localhost:3001/api/tasks/${taskId}/status`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ status: newStatus })
+//     })
+//         .then(response => response.json())
+//         .then(updatedTask => {
+//             console.log('Task status updated in database:', updatedTask);
+//         })
+//         .catch(error => console.error('Error updating task status:', error));
+// }
