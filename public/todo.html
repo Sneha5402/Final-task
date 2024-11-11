@@ -11,11 +11,11 @@
 
 <body>
     <div class="container">
-        <header><b>TO DO LIST</b></header>
-        
+        <header><b>To-Do LIST</b></header>
+
         <form action="/tasks/create" method="POST" class="text">
 
-    
+
             <input type="text" id="task" name="task" placeholder="Enter your task" required>
 
 
@@ -28,11 +28,9 @@
         <!-- Task filters -->
         <div class="tabs">
             <div class="filters">
-                <span id="all"><b>All</b>(<span id="allCount">0</span>)</span>
-                <span id="assigned"><b>Assigned</b> (<span id="assignedCount">0</span>)</span>
-                <span id="completed"><b>Completed</b> (<span id="completedCount">0</span>)</span>
+                <h3>Task Lists</h3>
             </div>
-            <button class="clear-btn" type="button">Clear All</button>
+            <!-- <button class="clear-btn" type="button">Clear All</button> -->
         </div>
 
         <div class="todo-item">
@@ -40,19 +38,19 @@
                 <!-- Tasks will be listed here -->
             </ul>
         </div>
-        
-                <!-- Logout Button -->
-                <form action="/logout" method="POST">
-                    <button type="submit" class="logout-btn">Logout</button>
-                </form>
-            </div>
-    
-            <!-- If not logged in, the login page should be displayed -->
-            <div id="loginSection" style="display: none;">
-                <a href="/login">Login</a>
-            </div>
 
-        <div class="no-tasks" style="display: none;">No tasks found</div>
+        <!-- Logout Button -->
+        <form action="/logout" method="POST">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <!-- If not logged in, the login page should be displayed -->
+    <!-- <div id="loginSection" style="display: none;">
+                <a href="/login">Login</a>
+            </div> -->
+
+    <div class="no-tasks" style="display: none;">No tasks found</div>
     </div>
 
 

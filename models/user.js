@@ -2,9 +2,9 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const bcrypt = require('bcryptjs');
+const Task = require('./task');
 
-
-const User = sequelize.define('User', {
+const User = sequelize.define('Users', {
     userid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -48,7 +48,14 @@ const User = sequelize.define('User', {
         }
     }
 });
-
+// Define the one-to-many association
+User.hasMany(Task, {
+    foreignKey: 'userid',
+  });
+  
+Task.belongsTo(User, {
+    foreignKey: 'userid',           
+  });
 
 
 console.log(User === sequelize.models.User);

@@ -17,7 +17,14 @@ module.exports = {
       status: {
         type: Sequelize.ENUM('assigned', 'completed', 'pending'), 
         allowNull: false,
-        defaultValue: 'pending', // Default to 'pending' if no status is provided
+        defaultValue: 'pending', 
+      },
+      userid: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users', 
+          key: 'userid',
+        },
       },
       createdAt: {
         type: Sequelize.DATE,

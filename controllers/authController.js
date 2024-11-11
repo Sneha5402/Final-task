@@ -32,4 +32,28 @@ const loginUser = async (username, password) => {
     }
 };
 
-module.exports = { loginUser };
+// Function to log out the user using refresh token
+const logoutUser = async (refreshToken) => {
+    try {
+        // Find the user by their refresh token
+        const user = await User.findOne({ where: { refreshToken } });
+
+        if (!user) {
+            return { error: 'User not found with this refresh token' };
+        }
+
+        // Clear the refresh token from the user record in the database
+        await user.update({ refreshToken: null });
+
+        console.log('User logged out successfully');
+        return { message: 'User logged out successfully' };
+    } catch (error) {
+        console.error('Error during logout:', error);
+        throw error;  // Handle or log the error as needed
+    }
+};
+
+
+
+
+module.exports = { loginUser , logoutUser};

@@ -13,16 +13,15 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Configure CORS to allow only localhost
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || origin.startsWith('http://localhost')) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
-}));
+// CORS configuration: Allow only 'http://localhost:3001'
+const corsOptions = {
+    origin: 'http://localhost:3001', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    credentials: true, 
+  };
+  
+  app.use(cors(corsOptions));
 
 // Middleware to parse incoming JSON data
 app.use(express.json());
@@ -36,6 +35,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
+app.get('/', (req, res) => {
+    res.redirect('/login');
+});
+
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
@@ -126,10 +129,38 @@ app.post('/tasks/create', async (req, res) => {
         res.status(500).send('Error creating task');
     }
 });
+
 app.post('/logout', (req, res) => {
     res.redirect('/login');
 });
 
+
+
+
+// // POST route for logout using refresh token
+// app.post('/logout', async (req, res) => {
+//     const { refreshToken } = req.body;
+
+//     if (!refreshToken) {
+//         return res.status(400).json({ error: 'No refresh token provided' });
+//     }
+
+//     try {
+//         const user = await User.findOne({ where: { refreshToken } });
+
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found with this refresh token' });
+//         }
+
+//         // Remove the refresh token from the user record in the database
+//         await user.update({ refreshToken: null });
+
+//         res.status(200).json({ message: 'User logged out successfully' });
+//     } catch (error) {
+//         console.error('Error during logout:', error);
+//         res.status(500).json({ error: 'An error occurred during logout' });
+//     }
+// });
 
 
 

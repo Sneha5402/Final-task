@@ -135,6 +135,7 @@ header {
     width: 100%;
     padding: 0%;
 
+
 }
 
 .todo-item li {
@@ -145,12 +146,13 @@ header {
     margin-bottom: 5%;
     padding: 0.2%;
     border-radius: 7px;
+    height: 40px;
 }
 
 .todo-item li span {
     margin-right: 11%;
-    margin-left: 1.5%;
-    width: 55%;
+    margin-left: 3%;
+    width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: medium;
@@ -177,29 +179,13 @@ input[type="text"] {
 }
 
 
-.complete-btn:hover {
-    background-color: #1db954;
-    transform: scale(1.2);
-}
 
-.task-text.completed {
-    color: #228429;
-}
-
-
-.complete-btn {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    font-size: medium;
-    color: #000000;
-}
 
 .edit-btn {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    font-size: medium;
+    font-size: large;
 }
 
 .edit-btn:hover {
@@ -211,7 +197,7 @@ input[type="text"] {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    font-size: medium;
+    font-size: large;
 }
 
 .delete-btn:hover {

@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');  
-
+const User = require('./user');
 
 const Task = sequelize.define('Tasks', {
     id: {
@@ -18,14 +18,24 @@ const Task = sequelize.define('Tasks', {
         allowNull: false,
         defaultValue: 'pending', 
     },
+    userid: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',  
+        key: 'userid'
+      },
+    },
 
 }, {
     timestamps: true,  
 });
 
+
+
+
 // async function alterTable() {
 //   try {
-//     await sequelize.sync({ alter: true });
+//     await sequelize.sync({ force: true });
 //     console.log("Table altered successfully.");
 //   } catch (error) {
 //     console.error("Error altering the table:", error);
@@ -35,6 +45,8 @@ const Task = sequelize.define('Tasks', {
 
 
 
+
 module.exports = Task;
 
 console.log('Sequelize instance imported:', sequelize);
+

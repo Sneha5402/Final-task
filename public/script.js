@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch tasks from the server
     fetch('http://localhost:3001/api/tasks')
+    
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -15,10 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 li.innerHTML = `
                     <span class="task-name">${task.task}</span>
-                    <span class="task-status">${task.status}</span>
                     <i class="fas fa-edit edit-btn"></i>
                     <i class="fas fa-trash delete-btn"></i>
-                    <i class="fas fa-check complete-btn"></i>
+                    
                 `;
 
                 taskList.appendChild(li);
@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add event listener for deleting task
                 li.querySelector('.delete-btn').addEventListener('click', () => deleteTask(task.id, li));
 
-                // Add event listener for toggling status
-                li.querySelector('.complete-btn').addEventListener('click', () => completeTask(task.id, li));
 
            
                 
@@ -91,28 +89,41 @@ function deleteTask(taskId, li) {
     }
 }
 
-// Function to complete a task and set other tasks to assigned
-function completeTask(taskId) {
-    const taskList = document.querySelectorAll('.todo-item ul li');
-    taskList.forEach(li => {
-        const liTaskId = li.getAttribute('data-id');
-        const newStatus = (liTaskId === taskId.toString()) ? 'completed' : 'assigned';
 
-        // Update in the UI
-        li.querySelector('.task-status').textContent = newStatus;
 
-        // Update in the database
-        fetch(`http://localhost:3001/api/tasks/${liTaskId}/status`, {
-            method: 'PUT',
+
+// Client-side logout function
+const logout = async () => {
+    try {
+        // Get the refresh token from the cookies (assuming it's stored in a cookie)
+        const refreshToken = document.cookie.split(';').find(cookie => cookie.includes('refreshToken'));
+
+        if (!refreshToken) {
+            console.log('No refresh token found');
+            return;
+        }
+
+        // Send logout request to the server with the refresh token
+        const response = await fetch('/logout', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ status: newStatus })
-        })
-        .then(response => response.json())
-        .then(updatedTask => {
-            console.log('Task status updated in database:', updatedTask);
-        })
-        .catch(error => console.error('Error updating task status:', error));
-    });
-}
+            body: JSON.stringify({ refreshToken })
+        });
+
+        const data = await response.json();
+        console.log(data.message);
+
+        // Clear the refresh token cookie and other session data
+        document.cookie = 'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('userId');
+
+        // Redirect to the login page after successful logout
+        window.location.href = '/login';  // Redirect to login page
+
+    } catch (error) {
+        console.error('Error logging out:', error);
+    }
+};
