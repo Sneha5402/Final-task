@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task List</title>
+</head>
+<body>
+  <h1>Task List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Task</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="tasksTableBody"></tbody>
+  </table>
+
+  <script>
+    async function fetchTasks() {
+      const response = await fetch('/tasks/data'); // Endpoint to fetch tasks as JSON
+      const tasks = await response.json();
+      const tasksTableBody = document.getElementById('tasksTableBody');
+      
+      tasks.forEach(task => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${task.id}</td><td>${task.task}</td><td>${task.status}</td>`;
+        tasksTableBody.appendChild(row);
+      });
+    }
+
+    // Fetch tasks on page load
+    window.onload = fetchTasks;
+  </script>
+</body>
+</html>

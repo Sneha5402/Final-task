@@ -15,7 +15,7 @@ body {
     height: 100vh;
 }
 
-.login-container, .signup-container {
+.signup-container {
     width: 100%;
     max-width: 400px;
     background-color: #fff;
@@ -25,7 +25,7 @@ body {
     text-align: center;
 }
 
-h2 {
+.signup-container h2 {
     margin-bottom: 20px;
     color: #333;
 }
@@ -42,8 +42,8 @@ h2 {
 }
 
 .form-group input[type="text"],
-.form-group input[type="password"],
-.form-group input[type="email"] {
+.form-group input[type="email"],
+.form-group input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -57,8 +57,7 @@ h2 {
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.2);
 }
 
-button[type="submit"],
-button[type="button"] {
+button[type="submit"] {
     width: 100%;
     padding: 12px;
     background-color: #4a90e2;
@@ -68,18 +67,9 @@ button[type="button"] {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
-button[type="submit"]:hover,
-button[type="button"]:hover {
+button[type="submit"]:hover {
     background-color: #357abd;
 }
 
-button[type="button"] {
-    background-color: #6c757d;
-}
-
-button[type="button"]:hover {
-    background-color: #5a6268;
-}

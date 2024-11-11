@@ -3,6 +3,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const bcrypt = require('bcryptjs');
 
+
 const User = sequelize.define('User', {
     userid: {
         type: DataTypes.INTEGER,
@@ -47,6 +48,8 @@ const User = sequelize.define('User', {
         }
     }
 });
+
+
 
 console.log(User === sequelize.models.User);
 

@@ -195,18 +195,6 @@ input[type="text"] {
     color: #000000;
 }
 
-.edit {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    font-size: medium;
-}
-
-.edit:hover {
-    background-color: rgb(75, 75, 138);
-    transform: scale(1.2);
-}
-
 .edit-btn {
     cursor: pointer;
     background-color: transparent;
@@ -215,6 +203,18 @@ input[type="text"] {
 }
 
 .edit-btn:hover {
+    background-color: rgb(75, 75, 138);
+    transform: scale(1.2);
+}
+
+.delete-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+}
+
+.delete-btn:hover {
     background-color: rgba(255, 0, 0, 0.411);
     transform: scale(1.2);
 }
@@ -226,6 +226,24 @@ input[type="text"] {
 li .checkbox {
     cursor: pointer;
 }
+
+.edit-btn, .delete-btn, .complete-btn {
+    /* font-size: 1%; */
+    cursor: pointer;
+    margin: 0 5px;
+}
+.logout-btn{
+    cursor: pointer;
+    padding: 2%;
+    background: linear-gradient(180deg, #31fd78, #0e0c0c);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    transform: scale(1.2);
+}
+
+
+
 
 /* Media query */
 /* Laptop-1024px */

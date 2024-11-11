@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');  
 
+
 const Task = sequelize.define('Tasks', {
     id: {
         type: DataTypes.INTEGER,
@@ -22,7 +23,17 @@ const Task = sequelize.define('Tasks', {
     timestamps: true,  
 });
 
-// async function alterTls.Task);
+// async function alterTable() {
+//   try {
+//     await sequelize.sync({ alter: true });
+//     console.log("Table altered successfully.");
+//   } catch (error) {
+//     console.error("Error altering the table:", error);
+//   }
+// }
+// alterTable();
+
+
 
 module.exports = Task;
 

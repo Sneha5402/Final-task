@@ -12,15 +12,12 @@
 <body>
     <div class="container">
         <header><b>TO DO LIST</b></header>
+        
         <form action="/tasks/create" method="POST" class="text">
+
+    
             <input type="text" id="task" name="task" placeholder="Enter your task" required>
-            
-            <!-- <label for="status">Status:</label>
-            <select id="status" name="status">
-                <option value="pending">Pending</option>
-                <option value="assigned">Assigned</option>
-                <option value="completed">Completed</option>
-            </select> -->
+
 
             <button type="submit" class="text-btn">Add Task</button>
         </form>
@@ -43,9 +40,21 @@
                 <!-- Tasks will be listed here -->
             </ul>
         </div>
+        
+                <!-- Logout Button -->
+                <form action="/logout" method="POST">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
+            </div>
+    
+            <!-- If not logged in, the login page should be displayed -->
+            <div id="loginSection" style="display: none;">
+                <a href="/login">Login</a>
+            </div>
 
         <div class="no-tasks" style="display: none;">No tasks found</div>
     </div>
+
 
     <script src="script.js"></script>
 </body>

@@ -8,10 +8,21 @@ const authRoutes = require('./routes/authRoutes');
 const { generateTokens } = require('./utils/tokens');
 const Task = require('./models/task');
 const tasksRouter = require('./routes/tasks');
-// const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Configure CORS to allow only localhost
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || origin.startsWith('http://localhost')) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
 
 // Middleware to parse incoming JSON data
 app.use(express.json());
@@ -78,7 +89,7 @@ app.post('/login', async (req, res) => {
         await user.save();
 
         res.cookie('accessToken', accessToken, {
-            httpOnly: false, // Typically, we don't need to store access token in cookies
+            httpOnly: true, // Typically, we don't need to store access token in cookies
         });
         // Redirect the user to the todo page after successful login
         res.redirect('/todo');
@@ -115,6 +126,11 @@ app.post('/tasks/create', async (req, res) => {
         res.status(500).send('Error creating task');
     }
 });
+app.post('/logout', (req, res) => {
+    res.redirect('/login');
+});
+
+
 
 
 

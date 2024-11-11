@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.innerHTML = `
                     <span class="task-name">${task.task}</span>
                     <span class="task-status">${task.status}</span>
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                    <button class="status-btn">Toggle Status</button>
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash delete-btn"></i>
+                    <i class="fas fa-check complete-btn"></i>
                 `;
 
                 taskList.appendChild(li);
@@ -30,7 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.querySelector('.delete-btn').addEventListener('click', () => deleteTask(task.id, li));
 
                 // Add event listener for toggling status
-                li.querySelector('.status-btn').addEventListener('click', () => toggleStatus(task.id, li));
+                li.querySelector('.complete-btn').addEventListener('click', () => completeTask(task.id, li));
+
+           
+                
+
             });
         })
         .catch(error => {
@@ -87,25 +91,28 @@ function deleteTask(taskId, li) {
     }
 }
 
-// // Function to toggle task status
-// function toggleStatus(taskId, li) {
-//     const currentStatus = li.querySelector('.task-status').textContent;
-//     const newStatus = currentStatus === 'pending' ? 'assigned' : (currentStatus === 'assigned' ? 'completed' : 'pending');
+// Function to complete a task and set other tasks to assigned
+function completeTask(taskId) {
+    const taskList = document.querySelectorAll('.todo-item ul li');
+    taskList.forEach(li => {
+        const liTaskId = li.getAttribute('data-id');
+        const newStatus = (liTaskId === taskId.toString()) ? 'completed' : 'assigned';
 
-//     // Update in the UI
-//     li.querySelector('.task-status').textContent = newStatus;
+        // Update in the UI
+        li.querySelector('.task-status').textContent = newStatus;
 
-//     // Update in the database
-//     fetch(`http://localhost:3001/api/tasks/${taskId}/status`, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ status: newStatus })
-//     })
-//         .then(response => response.json())
-//         .then(updatedTask => {
-//             console.log('Task status updated in database:', updatedTask);
-//         })
-//         .catch(error => console.error('Error updating task status:', error));
-// }
+        // Update in the database
+        fetch(`http://localhost:3001/api/tasks/${liTaskId}/status`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: newStatus })
+        })
+        .then(response => response.json())
+        .then(updatedTask => {
+            console.log('Task status updated in database:', updatedTask);
+        })
+        .catch(error => console.error('Error updating task status:', error));
+    });
+}
