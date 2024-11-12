@@ -28,9 +28,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-
-
-// POST route for logout using refresh token
+// POST route for logout
 router.post('/logout', async (req, res) => {
     const { refreshToken } = req.body;
 
@@ -39,18 +37,20 @@ router.post('/logout', async (req, res) => {
     }
 
     try {
-        // Call the logout function to clear the refresh token from the database
-        const result = await logoutUser(refreshToken);
+        const user = await logoutUser.findOne({ where: { refreshToken } });
 
-        if (result.error) {
-            return res.status(400).json({ error: result.error });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found with this refresh token' });
         }
 
-        // If logout is successful, send success response
-        res.status(200).json({ message: result.message });
+        await user.update({ refreshToken: null });
+
+        res.status(200).json({ message: 'User logged out successfully' });
     } catch (error) {
+        console.error('Error during logout:', error);
         res.status(500).json({ error: 'An error occurred during logout' });
     }
 });
+
 
 module.exports = router;

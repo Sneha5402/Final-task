@@ -35,7 +35,6 @@ const loginUser = async (username, password) => {
 // Function to log out the user using refresh token
 const logoutUser = async (refreshToken) => {
     try {
-        // Find the user by their refresh token
         const user = await User.findOne({ where: { refreshToken } });
 
         if (!user) {
@@ -49,7 +48,7 @@ const logoutUser = async (refreshToken) => {
         return { message: 'User logged out successfully' };
     } catch (error) {
         console.error('Error during logout:', error);
-        throw error;  // Handle or log the error as needed
+        throw error;  
     }
 };
 

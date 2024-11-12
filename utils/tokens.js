@@ -6,9 +6,9 @@ const REFRESH_TOKEN_EXPIRATION = 7 * 24 * 60 * 60 * 1000;  // 7 days
 
 const generateTokens = () => {
     // Generate the access token (32-byte random token)
-    const accessToken = crypto.randomBytes(32).toString('hex');
+    const accessToken = crypto.randomBytes(16).toString('hex');
     // Generate the refresh token (64-byte random token)
-    const refreshToken = crypto.randomBytes(64).toString('hex');
+    const refreshToken = crypto.randomBytes(16).toString('hex');
 
     console.log("Generated access token:", accessToken);
     console.log("Generated refresh token:", refreshToken);
@@ -25,5 +25,10 @@ const generateTokens = () => {
     };
 };
 
-module.exports = { generateTokens };
+// Function to check if a token is expired
+const isTokenExpired = (expirationTime) => {
+    return Date.now() > expirationTime;
+};
+
+module.exports = { generateTokens, isTokenExpired  };
 

@@ -15,9 +15,8 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware to parse incoming JSON data
 app.use(express.json());
+
 app.use(corsMiddleware);
-
-
 
 app.use('/auth', authRoutes);
 app.use('/api', tasksRouter);
@@ -46,16 +45,16 @@ app.post('/signup', async (req, res) => {
     if (password !== confirmPassword) {
         return res.send('Passwords do not match');
     }
-
     try {
         // Save user data to the database
         const newUser = await User.create({
             username,
             email: email,
-            password, // Store the hashed password
+            password, 
         });
         console.log('User created:', newUser);
         res.redirect('/login');
+
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).send('Error signing up');
@@ -71,8 +70,6 @@ app.post('/login', async (req, res) => {
         if (!user) {
             return res.status(400).send('User not found');
         }
-
-        // Compare entered password with stored password (you should hash password before storing)
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
@@ -87,6 +84,9 @@ app.post('/login', async (req, res) => {
         res.cookie('accessToken', accessToken, {
             httpOnly: true, 
         });
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true, 
+        });
         res.redirect('/todo');
     } catch (error) {
         console.error('Error during login:', error);
@@ -94,12 +94,9 @@ app.post('/login', async (req, res) => {
     }
 });
 
-
-
 app.get('/todo', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'todo.html'));
 });
-
 
 app.post('/tasks/create', async (req, res) => {
     const { task, status } = req.body;
@@ -107,7 +104,6 @@ app.post('/tasks/create', async (req, res) => {
     if (!task) {
         return res.send('Task is required');
     }
-
     try {
         const newTask = await Task.create({
             task,      
@@ -122,37 +118,40 @@ app.post('/tasks/create', async (req, res) => {
     }
 });
 
-app.post('/logout', (req, res) => {
-    res.redirect('/login');
-});
 
-
-
-
-// // POST route for logout using refresh token
-// app.post('/logout', async (req, res) => {
-//     const { refreshToken } = req.body;
-
-//     if (!refreshToken) {
-//         return res.status(400).json({ error: 'No refresh token provided' });
-//     }
-
-//     try {
-//         const user = await User.findOne({ where: { refreshToken } });
-
-//         if (!user) {
-//             return res.status(404).json({ error: 'User not found with this refresh token' });
-//         }
-
-//         // Remove the refresh token from the user record in the database
-//         await user.update({ refreshToken: null });
-
-//         res.status(200).json({ message: 'User logged out successfully' });
-//     } catch (error) {
-//         console.error('Error during logout:', error);
-//         res.status(500).json({ error: 'An error occurred during logout' });
-//     }
+// app.post('/logout', (req, res) => {
+//     res.redirect('/login');
 // });
+
+
+
+
+// POST route for logout using refresh token
+app.post('/logout', async (req, res) => {
+    console.log(req.body);
+    const { refreshToken } = req.body;
+    console.log(refreshToken)
+
+    if (!refreshToken) {
+        return res.status(400).json({ error: 'No refresh token provided' });
+    }
+
+    try {
+        const user = await User.findOne({ where: { refreshToken } });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found with this refresh token' });
+        }
+
+        // Remove the refresh token from the user record in the database
+        await user.update({ refreshToken: null });
+
+        res.status(200).json({ message: 'User logged out successfully' });
+    } catch (error) {
+        console.error('Error during logout:', error);
+        res.status(500).json({ error: 'An error occurred during logout' });
+    }
+});
 
 
 

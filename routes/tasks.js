@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const  Task  = require('../models/task');
 
-// In your Express app
 router.get('/tasks', async (req, res) => {
     try {
         const tasks = await Task.findAll();  
@@ -13,32 +12,30 @@ router.get('/tasks', async (req, res) => {
     }
 });
 
-// In your Express app
 router.get('/tasks/:id', async (req, res) => {
     try {
-        const taskId = req.params.id;  // Get the task ID from the request parameters
-        const task = await Task.findOne({ where: { id: taskId } });  // Find the task by ID
+        const taskId = req.params.id;  
+        const task = await Task.findOne({ where: { id: taskId } });  
 
         if (!task) {
-            // If no task is found, return a 404 error
             return res.status(404).json({ error: 'Task not found' });
         }
 
-        res.json(task);  // Return the task as JSON if found
+        res.json(task); 
     } catch (error) {
         console.error('Error fetching task by ID:', error);
-        res.status(500).json({ error: 'Unable to fetch task' });  // Return error if something goes wrong
+        res.status(500).json({ error: 'Unable to fetch task' });  
     }
 });
 
 router.put('/tasks/:id', async (req, res) => {
     try {
         const taskId = req.params.id;
-        const task = req.body.task;  // Directly access req.body.task
+        const task = req.body.task;  
 
-        console.log('Request Params:', req.params);   // Confirm taskId
-        console.log('Request Body:', req.body);       // Log the full body for troubleshooting
-        console.log('Extracted Task Value:', task);   // Check extracted task value
+        console.log('Request Params:', req.params);   
+        console.log('Request Body:', req.body);       
+        console.log('Extracted Task Value:', task);   
 
         if (!task || typeof task !== 'string' || task.trim() === '') {
             return res.status(400).json({ error: 'Task name cannot be empty or invalid' });
@@ -60,9 +57,6 @@ router.put('/tasks/:id', async (req, res) => {
     }
 });
 
-
-
-// Route to delete a task
 router.delete('/tasks/:id', async (req, res) => {
     try {
         const taskId = req.params.id;
