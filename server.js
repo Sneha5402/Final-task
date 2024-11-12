@@ -8,23 +8,16 @@ const authRoutes = require('./routes/authRoutes');
 const { generateTokens } = require('./utils/tokens');
 const Task = require('./models/task');
 const tasksRouter = require('./routes/tasks');
-const cors = require('cors');
+const corsMiddleware = require('./cors');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// CORS configuration: Allow only 'http://localhost:3001'
-const corsOptions = {
-    origin: 'http://localhost:3001', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    allowedHeaders: ['Content-Type', 'Authorization'], 
-    credentials: true, 
-  };
-  
-  app.use(cors(corsOptions));
-
 // Middleware to parse incoming JSON data
 app.use(express.json());
+app.use(corsMiddleware);
+
+
 
 app.use('/auth', authRoutes);
 app.use('/api', tasksRouter);
@@ -92,9 +85,8 @@ app.post('/login', async (req, res) => {
         await user.save();
 
         res.cookie('accessToken', accessToken, {
-            httpOnly: true, // Typically, we don't need to store access token in cookies
+            httpOnly: true, 
         });
-        // Redirect the user to the todo page after successful login
         res.redirect('/todo');
     } catch (error) {
         console.error('Error during login:', error);
