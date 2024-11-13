@@ -1,24 +1,25 @@
 // server.js
 const express = require('express');
 const path = require('path');
-const sequelize = require('./config/db'); 
-const bcrypt = require('bcryptjs'); 
+const sequelize = require('./config/db');
+const bcrypt = require('bcryptjs');
 const User = require('./models/user');
-const authRoutes = require('./routes/authRoutes');
 const { generateTokens } = require('./utils/tokens');
 const Task = require('./models/task');
 const tasksRouter = require('./routes/tasks');
 const corsMiddleware = require('./cors');
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware to parse incoming JSON data
 app.use(express.json());
-
 app.use(corsMiddleware);
+app.use(cookieParser());
 
-app.use('/auth', authRoutes);
+
 app.use('/api', tasksRouter);
 
 
@@ -50,7 +51,7 @@ app.post('/signup', async (req, res) => {
         const newUser = await User.create({
             username,
             email: email,
-            password, 
+            password,
         });
         console.log('User created:', newUser);
         res.redirect('/login');
@@ -62,10 +63,12 @@ app.post('/signup', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+
+    console.log('Received body:', req.body);
+    const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ where: { username } });
+        const user = await User.findOne({ where: { email } });
 
         if (!user) {
             return res.status(400).send('User not found');
@@ -75,20 +78,20 @@ app.post('/login', async (req, res) => {
         if (!isPasswordValid) {
             return res.status(400).send('Invalid password');
         }
-        // Generate new access and refresh tokens
-        const { accessToken, refreshToken } = generateTokens(user); 
+        const { accessToken, refreshToken } = generateTokens(user);
 
         user.refreshToken = refreshToken;
         await user.save();
 
         res.cookie('accessToken', accessToken, {
-            httpOnly: true, 
+            httpOnly: true,
         });
         res.cookie('refreshToken', refreshToken, {
-            httpOnly: true, 
+            httpOnly: true,
         });
         res.redirect('/todo');
-    } catch (error) {
+    }
+    catch (error) {
         console.error('Error during login:', error);
         res.status(500).send('Error during login');
     }
@@ -106,8 +109,8 @@ app.post('/tasks/create', async (req, res) => {
     }
     try {
         const newTask = await Task.create({
-            task,      
-            status,      
+            task,
+            status,
         });
         console.log('Task created:', newTask);
         res.redirect('/todo');
@@ -119,42 +122,34 @@ app.post('/tasks/create', async (req, res) => {
 });
 
 
-// app.post('/logout', (req, res) => {
-//     res.redirect('/login');
-// });
-
-
-
-
-// POST route for logout using refresh token
 app.post('/logout', async (req, res) => {
-    console.log(req.body);
-    const { refreshToken } = req.body;
-    console.log(refreshToken)
+    const refreshToken = req.cookies.refreshToken;
 
     if (!refreshToken) {
-        return res.status(400).json({ error: 'No refresh token provided' });
+        return res.redirect('/login');
     }
 
     try {
         const user = await User.findOne({ where: { refreshToken } });
 
         if (!user) {
-            return res.status(404).json({ error: 'User not found with this refresh token' });
+            return res.status(400).send('User not found');
         }
 
-        // Remove the refresh token from the user record in the database
-        await user.update({ refreshToken: null });
+        // Clear the refresh token in the database
+        user.refreshToken = null;
+        await user.save();
 
-        res.status(200).json({ message: 'User logged out successfully' });
+        // Clear the cookies
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
+
+        res.redirect('/login');
     } catch (error) {
         console.error('Error during logout:', error);
-        res.status(500).json({ error: 'An error occurred during logout' });
+        res.status(500).send('Error during logout');
     }
 });
-
-
-
 
 // Database connection and server startup
 sequelize.authenticate()

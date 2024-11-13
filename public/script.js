@@ -83,6 +83,7 @@ const logout = async () => {
         const cookies = document.cookie.split(';');
         const refreshTokenCookie = cookies.find(cookie => cookie.trim().startsWith('refreshToken='));
 
+        // Check if the refresh token cookie is available
         if (!refreshTokenCookie) {
             console.log('No refresh token found');
             return;
@@ -102,18 +103,18 @@ const logout = async () => {
         const response = await fetch('http://localhost:3001/logout', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',  // Set content type to JSON
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ refreshToken })  // Send refreshToken in the request body
+            body: JSON.stringify({ refreshToken })  
         });
 
         const data = await response.json();
-        console.log(data.message);  // Log the message from the server
+        console.log(data.message);  
 
-        // Clear cookies and session data after logout
-        document.cookie = 'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('userId');
+
+        // Clear the refresh token cookie
+      document.cookie = 'refreshToken=; path=/;'
+      document.cookie = 'accessToken=; path=/;'
 
         // Redirect to login page
         window.location.href = '/login';
