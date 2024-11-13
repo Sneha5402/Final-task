@@ -46,7 +46,7 @@ const User = sequelize.define('Users', {
                 user.password = await bcrypt.hash(user.password, 10);
             }
         }
-    }
+    },
 });
 // Define the one-to-many association
 User.hasMany(Task, {

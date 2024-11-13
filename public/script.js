@@ -77,52 +77,5 @@ function deleteTask(taskId, li) {
 }
 
 
-const logout = async () => {
-    try {
-        // Retrieve the refresh token from cookies
-        const cookies = document.cookie.split(';');
-        const refreshTokenCookie = cookies.find(cookie => cookie.trim().startsWith('refreshToken='));
-
-        // Check if the refresh token cookie is available
-        if (!refreshTokenCookie) {
-            console.log('No refresh token found');
-            return;
-        }
-
-        // Extract the refresh token value from the cookie string
-        const refreshToken = refreshTokenCookie.split('=')[1];
-
-        if (!refreshToken) {
-            console.log('Refresh token is empty');
-            return;
-        }
-
-        console.log('Found refresh token:', refreshToken);  // Log to verify
-
-        // Send the refresh token to the logout route
-        const response = await fetch('http://localhost:3001/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ refreshToken })  
-        });
-
-        const data = await response.json();
-        console.log(data.message);  
-
-
-        // Clear the refresh token cookie
-      document.cookie = 'refreshToken=; path=/;'
-      document.cookie = 'accessToken=; path=/;'
-
-        // Redirect to login page
-        window.location.href = '/login';
-
-    } catch (error) {
-        console.error('Error logging out:', error);
-    }
-};
-
 
 

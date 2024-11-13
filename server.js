@@ -9,7 +9,8 @@ const Task = require('./models/task');
 const tasksRouter = require('./routes/tasks');
 const corsMiddleware = require('./cors');
 const cookieParser = require('cookie-parser');
-
+const authenticateUser = require('./controllers/authenticateUser');
+const checkAuth=require('./controllers/checkAuth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -67,6 +68,12 @@ app.post('/login', async (req, res) => {
     console.log('Received body:', req.body);
     const { email, password } = req.body;
 
+       // Check if email and password are provided
+       if (!email || !password) {
+        return res.status(400).send('Email and password are required');
+    }
+
+
     try {
         const user = await User.findOne({ where: { email } });
 
@@ -82,13 +89,10 @@ app.post('/login', async (req, res) => {
 
         user.refreshToken = refreshToken;
         await user.save();
-
-        res.cookie('accessToken', accessToken, {
-            httpOnly: true,
-        });
-        res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-        });
+        
+        res.cookie('userid', user.userid, { httpOnly: true, });
+        res.cookie('accessToken', accessToken, {httpOnly: true,});
+        res.cookie('refreshToken', refreshToken, {httpOnly: true,});
         res.redirect('/todo');
     }
     catch (error) {
@@ -97,24 +101,25 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/todo', (req, res) => {
+app.get('/todo',checkAuth, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'todo.html'));
 });
 
-app.post('/tasks/create', async (req, res) => {
+app.post('/tasks/create', authenticateUser, async (req, res) => {
     const { task, status } = req.body;
 
     if (!task) {
-        return res.send('Task is required');
+        return res.status(400).send('Task is required');
     }
+
     try {
         const newTask = await Task.create({
             task,
             status,
+            userid: req.userid,
         });
         console.log('Task created:', newTask);
         res.redirect('/todo');
-
     } catch (error) {
         console.error('Error creating task:', error);
         res.status(500).send('Error creating task');
@@ -138,6 +143,7 @@ app.post('/logout', async (req, res) => {
 
         // Clear the refresh token in the database
         user.refreshToken = null;
+        user.accessToken=null;
         await user.save();
 
         // Clear the cookies
@@ -150,6 +156,7 @@ app.post('/logout', async (req, res) => {
         res.status(500).send('Error during logout');
     }
 });
+
 
 // Database connection and server startup
 sequelize.authenticate()
