@@ -1,4 +1,3 @@
-// User.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const bcrypt = require('bcryptjs');
@@ -32,6 +31,10 @@ const User = sequelize.define('Users', {
     refreshToken: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    isDeleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false, // Default to false, indicating not deleted
     }
 }, {
     timestamps: true,
@@ -48,15 +51,15 @@ const User = sequelize.define('Users', {
         }
     },
 });
+
 // Define the one-to-many association
 User.hasMany(Task, {
     foreignKey: 'userid',
-  });
+});
   
 Task.belongsTo(User, {
-    foreignKey: 'userid',           
-  });
-
+    foreignKey: 'userid',
+});
 
 console.log(User === sequelize.models.User);
 

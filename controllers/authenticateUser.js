@@ -1,13 +1,21 @@
-const authenticateUser = (req, res, next) => {
-    const userid = req.cookies.userid;
-    console.log('userId from cookie:', userid); 
+const User = require('../models/user');
+const authenticateUser = async (req, res, next) => {
+    const userId = req.cookies.userid;
 
-    if (!userid) {
-        return res.status(401).redirect('/login');
+    if (!userId) {
+        return res.status(401).send('User not authenticated');
     }
 
-    req.userid = userid; 
-    next();
+    const user = await User.findOne({ where: { userid: userId } });
+
+    if (!user) {
+        return res.status(401).send('User not found');
+    }
+
+    req.userid = userId;
+
+    next(); // Proceed to the next middleware/route handler
 };
 
 module.exports = authenticateUser;
+

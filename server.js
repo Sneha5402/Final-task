@@ -68,11 +68,9 @@ app.post('/login', async (req, res) => {
     console.log('Received body:', req.body);
     const { email, password } = req.body;
 
-       // Check if email and password are provided
        if (!email || !password) {
         return res.status(400).send('Email and password are required');
     }
-
 
     try {
         const user = await User.findOne({ where: { email } });
@@ -89,10 +87,11 @@ app.post('/login', async (req, res) => {
 
         user.refreshToken = refreshToken;
         await user.save();
-        
+
         res.cookie('userid', user.userid, { httpOnly: true, });
         res.cookie('accessToken', accessToken, {httpOnly: true,});
         res.cookie('refreshToken', refreshToken, {httpOnly: true,});
+
         res.redirect('/todo');
     }
     catch (error) {
@@ -113,12 +112,20 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
     }
 
     try {
+                // Check if the user is soft-deleted
+                const user = await User.findOne({ where: { userid: req.userid, isDeleted: 0 } });
+
+                if (!user) {
+                    return res.status(400).send('User is soft-deleted or not found');
+                }
+        
         const newTask = await Task.create({
             task,
             status,
             userid: req.userid,
         });
         console.log('Task created:', newTask);
+        console.log('Creating task for user:', req.userid);
         res.redirect('/todo');
     } catch (error) {
         console.error('Error creating task:', error);
@@ -154,6 +161,32 @@ app.post('/logout', async (req, res) => {
     } catch (error) {
         console.error('Error during logout:', error);
         res.status(500).send('Error during logout');
+    }
+});
+
+// Soft delete route
+app.post('/delete', checkAuth, async (req, res) => {
+    try {
+        const userId = req.userid; 
+
+        const user = await User.findOne({ where: { userid: userId } });
+
+        if (!user) {
+            return res.status(400).send('User not found');
+        }
+
+        user.isDeleted = true;
+        await user.save();
+
+        // Clear the cookies and log the user out after soft delete
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
+        res.clearCookie('userid');
+
+        res.redirect('/login');
+    } catch (error) {
+        console.error('Error during soft delete:', error);
+        res.status(500).send('Error during soft delete');
     }
 });
 

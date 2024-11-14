@@ -1,14 +1,19 @@
-const checkAuth = (req, res, next) => {
-    // Check if the accessToken is present in the cookies
-    const { accessToken } = req.cookies;
-    console.log('Checking access token:', accessToken); // Debugging log
+const User = require('../models/user');
 
-    // If the accessToken is missing, redirect to the login page
-    if (!accessToken) {
-        return res.redirect('/login');
+const checkAuth = async (req, res, next) => {
+    const { accessToken, userid } = req.cookies;
+
+    if (!accessToken || !userid) {
+        const user = await User.findByPk(userid);
+        if (user) {
+            user.refreshToken = null;
+            user.accessToken = null;
+            await user.save();
+        }
+        
+        return res.redirect('/login'); 
     }
-
-    // Proceed to the next middleware/route handler if the token exists
+    
     next();
 };
 

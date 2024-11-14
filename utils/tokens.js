@@ -7,9 +7,7 @@ const REFRESH_TOKEN_EXPIRATION = 2 * 60 * 1000;  // 2 minutes
 const generateTokens = (user) => {
     const currentTime = Date.now();
 
-    // Check if the current access and refresh tokens are expired
     if (user.accessTokenExpiresAt > currentTime && user.refreshTokenExpiresAt > currentTime) {
-        // Tokens are still valid, return the existing ones
         return {
             accessToken: user.accessToken,
             refreshToken: user.refreshToken,
@@ -33,7 +31,7 @@ const generateTokens = (user) => {
     user.refreshToken = refreshToken;
     user.accessTokenExpiresAt = accessTokenExpiresAt;
     user.refreshTokenExpiresAt = refreshTokenExpiresAt;
-    user.save(); // Assuming `user.save()` persists the updated token info in the database
+    user.save(); 
 
     return {
         accessToken,
