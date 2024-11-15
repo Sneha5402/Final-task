@@ -198,6 +198,7 @@ app.post('/logout', async (req, res) => {
 
         // Remove the refresh token from the database
         user.refreshToken = null;
+        user.accessToken=null;
         await user.save();
 
         // Clear cookies
