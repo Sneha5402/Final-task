@@ -10,7 +10,7 @@ const tasksRouter = require('./routes/tasks');
 const corsMiddleware = require('./cors');
 const cookieParser = require('cookie-parser');
 const authenticateUser = require('./controllers/authenticateUser');
-const checkAuth=require('./controllers/checkAuth');
+const checkAuth = require('./controllers/checkAuth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -66,7 +66,7 @@ app.post('/login', async (req, res) => {
     console.log('Received body:', req.body);
     const { email, password } = req.body;
 
-       if (!email || !password) {
+    if (!email || !password) {
         return res.status(400).send('Email and password are required');
     }
     try {
@@ -80,14 +80,20 @@ app.post('/login', async (req, res) => {
         if (!isPasswordValid) {
             return res.status(400).send('Invalid password');
         }
-        const { accessToken, refreshToken } = generateTokens(user);
 
+        // Generate tokens
+        const { accessToken, refreshToken } = generateTokens();
+
+        // Save refresh token in the database
+        user.accessToken=accessToken;
         user.refreshToken = refreshToken;
         await user.save();
 
+        // Set tokens as cookies
+        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 }); 
+        res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
+
         res.cookie('userid', user.userid, { httpOnly: true, });
-        res.cookie('accessToken', accessToken, {httpOnly: true,});
-        res.cookie('refreshToken', refreshToken, {httpOnly: true,});
 
         res.redirect('/todo');
     }
@@ -97,11 +103,45 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.post('/refresh', async (req, res) => {
+    const { refreshToken } = req.cookies;
+
+    if (!refreshToken) {
+        console.log('No refresh token provided');
+        return res.status(401).send('Refresh token is required');
+    }
+
+    try {
+        const user = await User.findOne({ where: { refreshToken } });
+
+        if (!user) {
+            console.log('Invalid refresh token');
+            return res.status(403).send('Invalid refresh token');
+        }
+
+        const { accessToken, refreshToken: newRefreshToken } = generateTokens();
+
+        // Update the refresh token in the database
+        user.refreshToken = newRefreshToken;
+        await user.save();
+
+        // Set the new tokens as cookies
+        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 });
+        res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
+
+        console.log('Tokens refreshed successfully');
+        res.status(200).send('Token refreshed');
+    } catch (error) {
+        console.error('Error refreshing token:', error);
+        res.status(500).send('Error refreshing token');
+    }
+});
+
 
 // ToDo page
 app.get('/todo', checkAuth, async (req, res) => {
-        res.sendFile(path.join(__dirname, 'public', 'todo.html')); 
-    });
+    res.sendFile(path.join(__dirname, 'public', 'todo.html'));
+});
 
 app.post('/tasks/create', authenticateUser, async (req, res) => {
     const { task, status } = req.body;
@@ -143,25 +183,24 @@ app.get('/api/tasks', checkAuth, async (req, res) => {
 
 // Logout
 app.post('/logout', async (req, res) => {
-    const refreshToken = req.cookies.refreshToken;
+    const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
-        return res.redirect('/login');
+        return res.status(400).send('Refresh token is required for logout');
     }
 
     try {
+        // Find the user by refresh token
         const user = await User.findOne({ where: { refreshToken } });
-
         if (!user) {
-            return res.status(400).send('User not found');
+            return res.status(403).send('Invalid refresh token');
         }
 
-        // Clear the refresh token in the database
+        // Remove the refresh token from the database
         user.refreshToken = null;
-        user.accessToken=null;
         await user.save();
 
-        // Clear the cookies
+        // Clear cookies
         res.clearCookie('accessToken');
         res.clearCookie('refreshToken');
 
@@ -172,10 +211,11 @@ app.post('/logout', async (req, res) => {
     }
 });
 
+
 // Soft delete route
 app.post('/delete', checkAuth, async (req, res) => {
     try {
-        const userId = req.userid; 
+        const userId = req.userid;
 
         const user = await User.findOne({ where: { userid: userId } });
 

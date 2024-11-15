@@ -1,20 +1,24 @@
 const User = require('../models/user');
 
-const checkAuth = async (req, res, next) => {
-    const { accessToken, userid } = req.cookies;
+async function checkAuth(req, res, next) {
+    const { accessToken } = req.cookies;
 
-    if (!accessToken || !userid) {
-        const user = await User.findByPk(userid);
-        if (user) {
-            user.refreshToken = null;
-            user.accessToken = null;
-            await user.save();
-        }
-        
-        return res.redirect('/login'); 
+    if (!accessToken) {
+        return res.redirect('/login');
     }
-    
-    next();
-};
+
+    try {
+        const user = await User.findOne({ where: { refreshToken: req.cookies.refreshToken } });
+        if (!user) {
+            return res.redirect('/login');
+        }
+        // Token is valid; attach user ID to the request
+        req.userid = user.userid;
+        next();
+    } catch (error) {
+        console.error('Authentication error:', error);
+        res.status(401).send('Unauthorized');
+    }
+}
 
 module.exports = checkAuth;

@@ -14,15 +14,10 @@
         <header><b>To-Do LIST</b></header>
 
         <form action="/tasks/create" method="POST" class="text">
-
-
             <input type="text" id="task" name="task" placeholder="Enter your task" required>
-
-
             <button type="submit" class="text-btn">Add Task</button>
         </form>
 
-        <!-- Field for showing the error message -->
         <div class="error"></div>
 
         <!-- Task filters -->
@@ -30,7 +25,7 @@
             <div class="filters">
                 <h3>Task Lists</h3>
             </div>
-            <!-- <button class="clear-btn" type="button">Clear All</button> -->
+            
         </div>
 
         <div class="todo-item">
@@ -46,7 +41,8 @@
     </div>
 
 
-    <div class="no-tasks" style="display: none;">No tasks found</div>
+     <!-- Loading Spinner -->
+     <div class="loading-spinner"></div>
     </div>
 
 
