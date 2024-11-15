@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch tasks from the server
-    fetch('http://localhost:3001/api/tasks')
+    
+    fetch('http://localhost:3001/api/tasks', {
+        credentials: 'include' 
+    })
     
         .then(response => {
             if (!response.ok) {

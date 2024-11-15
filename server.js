@@ -73,10 +73,10 @@ app.post('/login', async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ where: { email } });
+        const user = await User.findOne({ where: { email, isDeleted: 0 } });
 
         if (!user) {
-            return res.status(400).send('User not found');
+            return res.status(400).send('User not found or is soft-deleted');
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
@@ -100,9 +100,9 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/todo',checkAuth, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'todo.html'));
-});
+app.get('/todo', checkAuth, async (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', 'todo.html')); 
+    });
 
 app.post('/tasks/create', authenticateUser, async (req, res) => {
     const { task, status } = req.body;
@@ -110,15 +110,7 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
     if (!task) {
         return res.status(400).send('Task is required');
     }
-
     try {
-                // Check if the user is soft-deleted
-                const user = await User.findOne({ where: { userid: req.userid, isDeleted: 0 } });
-
-                if (!user) {
-                    return res.status(400).send('User is soft-deleted or not found');
-                }
-        
         const newTask = await Task.create({
             task,
             status,
@@ -130,6 +122,23 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
     } catch (error) {
         console.error('Error creating task:', error);
         res.status(500).send('Error creating task');
+    }
+});
+app.get('/api/tasks', checkAuth, async (req, res) => {
+    try {
+        const userid = req.query.userid || req.cookies.userid;
+
+        if (!userid) {
+            return res.status(401).send('Unauthorized: No user ID found');
+        }
+        const tasks = await Task.findAll({
+            where: { userid: userid },
+        });
+
+        res.json(tasks);
+    } catch (error) {
+        console.error('Error fetching tasks:', error);
+        res.status(500).send('Error fetching tasks');
     }
 });
 

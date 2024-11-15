@@ -1,4 +1,5 @@
 const User = require('../models/user');
+
 const authenticateUser = async (req, res, next) => {
     const userId = req.cookies.userid;
 
@@ -14,7 +15,7 @@ const authenticateUser = async (req, res, next) => {
 
     req.userid = userId;
 
-    next(); // Proceed to the next middleware/route handler
+    next(); 
 };
 
 module.exports = authenticateUser;
