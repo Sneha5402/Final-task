@@ -15,16 +15,11 @@ const checkAuth=require('./controllers/checkAuth');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware to parse incoming JSON data
+// Middlewares
 app.use(express.json());
 app.use(corsMiddleware);
 app.use(cookieParser());
-
-
 app.use('/api', tasksRouter);
-
-
-// Middleware to parse URL-encoded data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -41,6 +36,8 @@ app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signup.html'));
 });
 
+
+// Signup 
 app.post('/signup', async (req, res) => {
     const { username, email, password, confirmPassword } = req.body;
 
@@ -63,6 +60,7 @@ app.post('/signup', async (req, res) => {
     }
 });
 
+// Login
 app.post('/login', async (req, res) => {
 
     console.log('Received body:', req.body);
@@ -71,9 +69,8 @@ app.post('/login', async (req, res) => {
        if (!email || !password) {
         return res.status(400).send('Email and password are required');
     }
-
     try {
-        const user = await User.findOne({ where: { email, isDeleted: 0 } });
+        const user = await User.findOne({ where: { email, isDeleted: 0 } }); //soft delete
 
         if (!user) {
             return res.status(400).send('User not found or is soft-deleted');
@@ -100,6 +97,8 @@ app.post('/login', async (req, res) => {
     }
 });
 
+
+// ToDo page
 app.get('/todo', checkAuth, async (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'todo.html')); 
     });
@@ -142,7 +141,7 @@ app.get('/api/tasks', checkAuth, async (req, res) => {
     }
 });
 
-
+// Logout
 app.post('/logout', async (req, res) => {
     const refreshToken = req.cookies.refreshToken;
 
