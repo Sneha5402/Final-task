@@ -243,6 +243,25 @@ li .checkbox {
     z-index: 1000; /* Make sure spinner stays on top */
 }
 
+.completed .task-name {
+    color: gray;
+}
+
+.completed .complete-btn {
+    color: green;
+}
+.complete-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: large;
+}
+
+.complete-btn:hover {
+    background-color: green;
+    transform: scale(1.2);
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);

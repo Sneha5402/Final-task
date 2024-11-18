@@ -35,10 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     li.innerHTML = `
                         <span class="task-name">${task.task}</span>
+                         <i class="fas fa-check complete-btn"></i>
                         <i class="fas fa-edit edit-btn"></i>
                         <i class="fas fa-trash delete-btn"></i>
                     `;
                     taskList.appendChild(li);
+                    li.querySelector('.complete-btn').addEventListener('click', () => completeTask(task.id, li));
                     li.querySelector('.edit-btn').addEventListener('click', () => editTask(task.id, li));
                     li.querySelector('.delete-btn').addEventListener('click', () => deleteTask(task.id, li));
                 });
@@ -50,6 +52,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
     }
+
+        // Function to mark a task as completed
+        function completeTask(taskId, li) {
+            fetch(`http://localhost:3001/api/tasks/${taskId}/complete`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ status: 'completed' }),
+            })
+                .then(response => {
+                    if (response.status === 401) {
+                        handleTokenRefresh(() => completeTask(taskId, li)); // Retry after refreshing the token
+                        throw new Error('Unauthorized');
+                    }
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(updatedTask => {
+                    console.log('Task marked as completed:', updatedTask);
+                    li.classList.add('completed');
+                })
+                .catch(error => {
+                    console.error('Error marking task as completed:', error);
+                });
+        }
 
     // Function to edit task
     function editTask(taskId, li) {
@@ -108,6 +138,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(error => console.error('Error deleting task:', error));
         }
     }
+// Function to filter tasks based on their status
+function filterTasks(status) {
+    const allTasks = document.querySelectorAll('.todo-item ul li');
+
+    // Iterate over all tasks and toggle visibility based on the status
+    allTasks.forEach(task => {
+        const isCompleted = task.classList.contains('completed');
+        if ((status === 'pending' && isCompleted) || (status === 'completed' && !isCompleted)) {
+            task.style.display = 'none'; // Hide tasks that don't match the filter
+        } else {
+            task.style.display = 'flex'; // Show tasks that match the filter
+        }
+    });
+}
+
+// Event listener for resetting filters (optional)
+function showAllTasks() {
+    const allTasks = document.querySelectorAll('.todo-item ul li');
+    allTasks.forEach(task => (task.style.display = 'flex')); // Show all tasks
+}
+
+    
 
 async function handleTokenRefresh() {
     try {
