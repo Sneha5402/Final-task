@@ -31,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tasks.forEach(task => {
                     const li = document.createElement('li');
                     li.setAttribute('data-id', task.id);
-                    li.className = task.status === 'completed' ? 'completed' : '';
+                if (task.status === 'completed') {
+                    li.classList.add('completed');
+                }
 
                     li.innerHTML = `
                         <span class="task-name">${task.task}</span>
