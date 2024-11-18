@@ -1,45 +1,42 @@
-// Migration to create 'tasks' table
 'use strict';
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Tasks', {
+    await queryInterface.createTable('tasks', {
       id: {
-        type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
       },
       task: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       status: {
-        type: Sequelize.ENUM('assigned', 'completed', 'pending'), 
-        allowNull: false,
-        defaultValue: 'pending', 
+        type: Sequelize.ENUM('assigned', 'completed', 'pending'),
+        defaultValue: 'pending',
       },
       userid: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: 'users', 
+          model: 'users',
           key: 'userid',
         },
       },
       createdAt: {
-        type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        type: Sequelize.DATE,
       },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Tasks');
+    await queryInterface.dropTable('tasks');
   },
 };

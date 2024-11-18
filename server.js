@@ -163,23 +163,6 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
         res.status(500).send('Error creating task');
     }
 });
-app.get('/api/tasks', checkAuth, async (req, res) => {
-    try {
-        const userid = req.query.userid || req.cookies.userid;
-
-        if (!userid) {
-            return res.status(401).send('Unauthorized: No user ID found');
-        }
-        const tasks = await Task.findAll({
-            where: { userid: userid },
-        });
-
-        res.json(tasks);
-    } catch (error) {
-        console.error('Error fetching tasks:', error);
-        res.status(500).send('Error fetching tasks');
-    }
-});
 
 // Logout
 app.post('/logout', async (req, res) => {

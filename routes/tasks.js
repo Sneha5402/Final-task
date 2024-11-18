@@ -1,14 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const  Task  = require('../models/task');
+const checkAuth = require('../controllers/checkAuth');
 
-router.get('/tasks', async (req, res) => {
+router.get('/tasks', checkAuth, async (req, res) => {
     try {
-        const tasks = await Task.findAll();  
-        res.json(tasks);  
+        const userid =  req.cookies.userid;
+        console.log('User ID:', req.cookies.userid);
+
+
+        if (!userid) {
+            return res.status(401).send('Unauthorized: No user ID found');
+        }
+        const task = await Task.findAll({
+            where: { userid: userid },
+        });
+
+        res.json(task);
+        console.log(task)
     } catch (error) {
         console.error('Error fetching tasks:', error);
-        res.status(500).json({ error: 'Unable to fetch tasks' });
+        res.status(500).send('Error fetching tasks');
     }
 });
 
