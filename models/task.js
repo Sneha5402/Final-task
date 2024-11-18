@@ -48,5 +48,4 @@ const Task = sequelize.define('Tasks', {
 
 module.exports = Task;
 
-console.log('Sequelize instance imported:', sequelize);
 

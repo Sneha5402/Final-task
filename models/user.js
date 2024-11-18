@@ -41,12 +41,12 @@ const User = sequelize.define('Users', {
     hooks: {
         beforeCreate: async (user) => {
             if (user.password) {
-                user.password = await bcrypt.hash(user.password, 10); // Hash the password before saving
+                user.password = await bcrypt.hash(user.password, 5); // Hash the password before saving
             }
         },
         beforeUpdate: async (user) => {
             if (user.changed('password')) {
-                user.password = await bcrypt.hash(user.password, 10);
+                user.password = await bcrypt.hash(user.password, 5);
             }
         }
     },
@@ -61,8 +61,5 @@ Task.belongsTo(User, {
     foreignKey: 'userid',
 });
 
-console.log(User === sequelize.models.User);
-
 module.exports = User;
 
-console.log('Sequelize instance imported:', sequelize);

@@ -55,7 +55,6 @@ app.post('/signup', async (req, res) => {
         res.redirect('/login');
 
     } catch (error) {
-        console.error('Error creating user:', error);
         res.status(500).send('Error signing up');
     }
 });
@@ -98,7 +97,6 @@ app.post('/login', async (req, res) => {
         res.redirect('/todo');
     }
     catch (error) {
-        console.error('Error during login:', error);
         res.status(500).send('Error during login');
     }
 });
@@ -107,7 +105,6 @@ app.post('/refresh', async (req, res) => {
     const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
-        console.log('No refresh token provided');
         return res.status(401).send('Refresh token is required');
     }
 
@@ -115,7 +112,6 @@ app.post('/refresh', async (req, res) => {
         const user = await User.findOne({ where: { refreshToken } });
 
         if (!user) {
-            console.log('Invalid refresh token');
             return res.status(403).send('Invalid refresh token');
         }
 
@@ -132,7 +128,6 @@ app.post('/refresh', async (req, res) => {
         console.log('Tokens refreshed successfully');
         res.status(200).send('Token refreshed');
     } catch (error) {
-        console.error('Error refreshing token:', error);
         res.status(500).send('Error refreshing token');
     }
 });
@@ -156,10 +151,8 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
             userid: req.userid,
         });
         console.log('Task created:', newTask);
-        console.log('Creating task for user:', req.userid);
         res.redirect('/todo');
     } catch (error) {
-        console.error('Error creating task:', error);
         res.status(500).send('Error creating task');
     }
 });
@@ -187,10 +180,8 @@ app.post('/logout', async (req, res) => {
         // Clear cookies
         res.clearCookie('accessToken');
         res.clearCookie('refreshToken');
-
         res.redirect('/login');
     } catch (error) {
-        console.error('Error during logout:', error);
         res.status(500).send('Error during logout');
     }
 });
@@ -217,7 +208,6 @@ app.post('/delete', checkAuth, async (req, res) => {
 
         res.redirect('/login');
     } catch (error) {
-        console.error('Error during soft delete:', error);
         res.status(500).send('Error during soft delete');
     }
 });
