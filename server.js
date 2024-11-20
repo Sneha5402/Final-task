@@ -82,11 +82,6 @@ app.post('/login', async (req, res) => {
         // Generate tokens
         const { accessToken, refreshToken } = generateTokens();
 
-        // Save refresh token in the database
-        user.accessToken=accessToken;
-        user.refreshToken = refreshToken;
-        await user.save();
-
         // Set tokens as cookies
         res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 }); 
         res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
