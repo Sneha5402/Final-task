@@ -170,8 +170,8 @@ app.post('/logout', (req, res) => {
     }
 
     // Clear both the access token and refresh token cookies
-    res.clearCookie('accessToken', { httpOnly: true, secure: true, sameSite: 'strict' });
-    res.clearCookie('refreshToken', { httpOnly: true, secure: true, sameSite: 'strict' });
+    res.clearCookie('accessToken', { httpOnly: true, });
+    res.clearCookie('refreshToken', { httpOnly: true, });
 
     res.redirect('/login'); 
 });
