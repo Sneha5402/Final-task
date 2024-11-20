@@ -24,14 +24,6 @@ const User = sequelize.define('Users', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    accessToken: {
-        type: DataTypes.STRING, 
-        allowNull: true
-    },
-    refreshToken: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
     isDeleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false, 
@@ -62,4 +54,3 @@ Task.belongsTo(User, {
 });
 
 module.exports = User;
-

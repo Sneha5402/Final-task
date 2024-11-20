@@ -1,13 +1,13 @@
 const User = require('../models/user');
 
 async function checkAuth(req, res, next) {
-    const { accessToken, userid } = req.cookies;
+    const {  userid } = req.cookies;
 
-    if (!accessToken || !userid) {
+    if ( !userid) {
         return res.status(401).send('Unauthorized');
     }
     try {
-        const user = await User.findOne({ where: { refreshToken: req.cookies.refreshToken } });
+        const user = await User.findOne({ where: { userid: req.cookies.userid } });
         if (!user) {
             return res.redirect('/login');
         }

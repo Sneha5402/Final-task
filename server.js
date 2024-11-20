@@ -62,7 +62,6 @@ app.post('/signup', async (req, res) => {
 // Login
 app.post('/login', async (req, res) => {
 
-    console.log('Received body:', req.body);
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -101,7 +100,16 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.post('/refresh', async (req, res) => {
+// Utility function to validate refresh tokens
+const isValidRefreshToken = (token) => {
+    try {
+        return typeof token === 'string' && token.length > 0; 
+    } catch (error) {
+        console.error('Invalid refresh token:', error);
+        return false;
+    }
+};
+app.post('/refresh', (req, res) => {
     const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
@@ -109,28 +117,24 @@ app.post('/refresh', async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ where: { refreshToken } });
-
-        if (!user) {
+        if (!isValidRefreshToken(refreshToken)) {
             return res.status(403).send('Invalid refresh token');
         }
 
         const { accessToken, refreshToken: newRefreshToken } = generateTokens();
 
-        // Update the refresh token in the database
-        user.refreshToken = newRefreshToken;
-        await user.save();
-
         // Set the new tokens as cookies
-        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 });
-        res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
+        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 }); // 1 minute
+        res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
 
         console.log('Tokens refreshed successfully');
         res.status(200).send('Token refreshed');
     } catch (error) {
+        console.error('Error refreshing token:', error);
         res.status(500).send('Error refreshing token');
     }
 });
+
 
 
 // ToDo page
@@ -157,33 +161,19 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
     }
 });
 
-// Logout
-app.post('/logout', async (req, res) => {
+// Logout Route
+app.post('/logout', (req, res) => {
     const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
         return res.status(400).send('Refresh token is required for logout');
     }
 
-    try {
-        // Find the user by refresh token
-        const user = await User.findOne({ where: { refreshToken } });
-        if (!user) {
-            return res.status(403).send('Invalid refresh token');
-        }
+    // Clear both the access token and refresh token cookies
+    res.clearCookie('accessToken', { httpOnly: true, secure: true, sameSite: 'strict' });
+    res.clearCookie('refreshToken', { httpOnly: true, secure: true, sameSite: 'strict' });
 
-        // Remove the refresh token from the database
-        user.refreshToken = null;
-        user.accessToken=null;
-        await user.save();
-
-        // Clear cookies
-        res.clearCookie('accessToken');
-        res.clearCookie('refreshToken');
-        res.redirect('/login');
-    } catch (error) {
-        res.status(500).send('Error during logout');
-    }
+    res.redirect('/login'); 
 });
 
 

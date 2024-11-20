@@ -142,13 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let isRefreshing = false;
+
     async function handleTokenRefresh() {
+        if (isRefreshing) return; // Prevent multiple simultaneous refresh attempts
+    
+        isRefreshing = true;
         try {
             const response = await fetch('/refresh', {
                 method: 'POST',
-                credentials: 'include',
+                credentials: 'include', 
             });
-
+    
             if (response.ok) {
                 console.log('Access token refreshed successfully');
             } else {
@@ -158,9 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error during token refresh:', error);
             window.location.href = '/login';
+        } finally {
+            isRefreshing = false; 
         }
     }
-
+    
     setTimeout(handleTokenRefresh, 2 * 60 * 1000);
-    setInterval(handleTokenRefresh, 50 * 1000);
+        setInterval(handleTokenRefresh, 50 * 1000);
+    
 });
