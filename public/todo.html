@@ -23,13 +23,13 @@
         <!-- Task filters -->
         <div class="tabs">
             <div class="filters">
-                <h3>Task Lists</h3>
+                <span id="all"><b>All</b> (<span id="allCount">0</span>)</span>
+                <span id="completed"><b>Completed</b> (<span id="completedCount">0</span>)</span>
             </div>
-            
         </div>
 
         <div class="todo-item">
-            <ul>
+            <ul id="taskList">
                 <!-- Tasks will be listed here -->
             </ul>
         </div>
@@ -40,11 +40,8 @@
         </form>
     </div>
 
-
-     <!-- Loading Spinner -->
-     <div class="loading-spinner"></div>
-    </div>
-
+    <!-- Loading Spinner -->
+    <div class="loading-spinner"></div>
 
     <script src="script.js"></script>
 </body>
