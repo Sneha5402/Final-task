@@ -116,10 +116,9 @@ app.post('/refresh', (req, res) => {
             return res.status(403).send('Invalid refresh token');
         }
 
-        const { accessToken, refreshToken: newRefreshToken } = generateTokens();
+        const {  refreshToken: newRefreshToken } = generateTokens();
 
         // Set the new tokens as cookies
-        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 }); // 1 minute
         res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
 
         console.log('Tokens refreshed successfully');
