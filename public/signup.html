@@ -11,7 +11,7 @@
 <body>
     <div class="signup-container">
         <h2>Sign Up</h2>
-        <form action="/signup" method="POST">
+        <form id="signupForm">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -25,14 +25,45 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="form-group">
-
-                <label for="confirmPassword">Confirm Password</label>
+                <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
-
             </div>
             <button type="submit">Create Account</button>
         </form>
     </div>
+
+    <script>
+        const signupForm = document.getElementById('signupForm');
+
+        signupForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); 
+
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                confirmPassword: document.getElementById('confirmPassword').value,
+            };
+
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    window.location.href = result.redirect || '/login';
+                } else {
+                    console.error(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
 </body>
 
 </html>

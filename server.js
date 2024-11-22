@@ -7,7 +7,7 @@ const User = require('./models/user');
 const { generateTokens } = require('./utils/tokens');
 const Task = require('./models/task');
 const tasksRouter = require('./routes/tasks');
-const corsMiddleware = require('./cors');
+const corsMiddleware = require('./cors/cors');
 const cookieParser = require('cookie-parser');
 const authenticateUser = require('./controllers/authenticateUser');
 const checkAuth = require('./controllers/checkAuth');
@@ -42,7 +42,10 @@ app.post('/signup', async (req, res) => {
     const { username, email, password, confirmPassword } = req.body;
 
     if (password !== confirmPassword) {
-        return res.send('Passwords do not match');
+        return res.status(400).json({
+            status: 'error',
+            message: 'Passwords do not match',
+        });
     }
     try {
         // Save user data to the database
@@ -52,10 +55,17 @@ app.post('/signup', async (req, res) => {
             password,
         });
         console.log('User created:', newUser);
-        res.redirect('/login');
+        res.status(201).json({
+            status: 'success',
+            message: 'User successfully registered',
+            redirect: '/login'
+        });
 
     } catch (error) {
-        res.status(500).send('Error signing up');
+        res.status(409).json({
+            status: 'error',
+            message: 'User already exists',
+          });
     }
 });
 
@@ -65,18 +75,28 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(400).send('Email and password are required');
+        return res.status(400).json({
+            status: 'error',
+            message: 'Email and password are required',
+        });
     }
+    
     try {
-        const user = await User.findOne({ where: { email, isDeleted: 0 } }); //soft delete
+        const user = await User.findOne({ where: { email, isDeleted: 0 } }); 
 
         if (!user) {
-            return res.status(400).send('User not found or is soft-deleted');
+            return res.status(404).json({
+                status: 'error',
+                message: 'User not found',
+              });
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
-            return res.status(400).send('Invalid password');
+            return res.status(401).json({
+                status: 'error',
+                message: 'Invalid password',
+            });
         }
 
         // Generate tokens
@@ -87,11 +107,17 @@ app.post('/login', async (req, res) => {
         res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
 
         res.cookie('userid', user.userid, { httpOnly: true, });
-
-        res.redirect('/todo');
+          return res.status(200).json({
+            status: 'success',
+            message: 'Login successful',
+            redirect: '/todo', 
+        });
     }
     catch (error) {
-        res.status(500).send('Error during login');
+        return res.status(500).json({
+            status: 'error',
+            message: 'Error during login, please try again later',
+        });
     }
 });
 
@@ -108,12 +134,20 @@ app.post('/refresh', (req, res) => {
     const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
-        return res.status(401).send('Refresh token is required');
+        return res.status(401).json({
+            status: 'error',
+            message: 'Refresh token is required',
+            data: null
+        });
     }
-
+    
     try {
         if (!isValidRefreshToken(refreshToken)) {
-            return res.status(403).send('Invalid refresh token');
+            return res.status(403).json({
+                status: 'error',
+                message: 'Invalid refresh token',
+                data: null
+            });
         }
 
         const { accessToken, refreshToken: newRefreshToken } = generateTokens();
@@ -124,9 +158,11 @@ app.post('/refresh', (req, res) => {
 
         console.log('Tokens refreshed successfully');
         res.status(200).send('Token refreshed');
-    } catch (error) {
-        console.error('Error refreshing token:', error);
-        res.status(500).send('Error refreshing token');
+    }catch (error) {
+        return res.status(500).json({
+            status: 'error',
+            message: 'An error occurred while processing the refresh token',
+        });
     }
 });
 
@@ -155,7 +191,6 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
         res.status(500).send('Error creating task');
     }
 });
-
 // Logout Route
 app.post('/logout', (req, res) => {
     const { refreshToken } = req.cookies;
@@ -172,6 +207,7 @@ app.post('/logout', (req, res) => {
 });
 
 
+
 // Soft delete route
 app.post('/delete', checkAuth, async (req, res) => {
     try {
@@ -180,7 +216,10 @@ app.post('/delete', checkAuth, async (req, res) => {
         const user = await User.findOne({ where: { userid: userId } });
 
         if (!user) {
-            return res.status(400).send('User not found');
+            return res.status(400).json({
+                status: 'error',
+                message: 'User not found',
+            });
         }
 
         user.isDeleted = true;

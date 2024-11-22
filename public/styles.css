@@ -16,7 +16,7 @@ body {
     box-sizing: border-box;
     background: #ebffe8cf;
     padding: 2%;
-    width: 25%;
+    width: 30%;
     height: 70%;
     border-radius: 50px;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
@@ -93,25 +93,12 @@ header {
     border-radius: 7px;
 }
 
-
-/* color for active filters and counts */
-#allCount.filter-active,
-#assignedCount.filter-active,
-#completedCount.filter-active,
-.tabs .filters .filter-active {
-    color: #228429;
-    font-weight: bold;
-}
-
 #allCount,
 #assignedCount,
 #completedCount {
     font-weight: bold;
 }
 
-.filter-count-active {
-    color:#228429;
-}
 
 
 /* Styling the list contents */
@@ -261,6 +248,13 @@ li .checkbox {
     background-color: green;
     transform: scale(1.2);
 }
+
+.filters span.active {
+    color: #228429;
+    font-weight: bold;
+    cursor: default;
+}
+
 
 @keyframes spin {
     0% {

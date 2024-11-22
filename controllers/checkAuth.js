@@ -3,8 +3,11 @@ const User = require('../models/user');
 async function checkAuth(req, res, next) {
     const {  userid } = req.cookies;
 
-    if ( !userid) {
-        return res.status(401).send('Unauthorized');
+    if (!userid) {
+        return res.status(401).json({
+            status: 'error',
+            message: 'Unauthorized'
+        });
     }
     try {
         const user = await User.findOne({ where: { userid: req.cookies.userid } });

@@ -54,14 +54,19 @@ router.put('/tasks/:id', async (req, res) => {
         }
 
         const updatedTask = await Task.findOne({ where: { id: taskId } });
-        res.json(updatedTask);
+        res.json({
+            success: true,
+            message: 'Task updated successfully',
+            taskId: taskId,
+            updatedTask: updatedTask
+        });
 
     } catch (error) {
         res.status(500).json({ error: 'Unable to update task' });
     }
 });
 
-// Delete the task
+// Delete a specific task by ID
 router.delete('/tasks/:id', async (req, res) => {
     try {
         const taskId = req.params.id;
@@ -70,11 +75,16 @@ router.delete('/tasks/:id', async (req, res) => {
         if (!deleted) {
             return res.status(404).json({ error: 'Task not found' });
         }
-        res.json({ message: 'Task deleted successfully' });
+        res.json({
+            success: true,
+            message: 'Task deleted successfully',
+            taskId: taskId
+        });
     } catch (error) {
         res.status(500).json({ error: 'Unable to delete task' });
     }
 });
+
 
 // Complete a task
 router.put('/tasks/:id/complete', async (req, res) => {

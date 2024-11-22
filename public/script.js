@@ -2,12 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.querySelector('.todo-item ul');
     const loadingSpinner = document.querySelector('.loading-spinner');
     const allFilter = document.getElementById('all');
+    const assignedFilter = document.getElementById('assigned');
     const completedFilter = document.getElementById('completed');
     const allCount = document.getElementById('allCount');
+    const assignedCount = document.getElementById('assignedCount');
     const completedCount = document.getElementById('completedCount');
 
-
-    let tasks = []; 
+    let tasks = [];
 
     if (loadingSpinner) {
         loadingSpinner.style.display = 'block';
@@ -51,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filteredTasks = tasks.filter(task => {
             if (filter === 'all') return true;
-            return task.status === filter;
+            if (filter === 'assigned') return task.status === 'assigned';
+            if (filter === 'completed') return task.status === 'completed';
         });
 
         filteredTasks.forEach(task => {
@@ -75,48 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         updateCounts();
+        updateFilterHighlight(filter);
     }
 
     // Function to update task counts for filters
     function updateCounts() {
         allCount.textContent = tasks.length;
+        assignedCount.textContent = tasks.filter(task => task.status === 'assigned').length;
         completedCount.textContent = tasks.filter(task => task.status === 'completed').length;
     }
 
-    allFilter.addEventListener('click', () => renderTasks('all'));
-    completedFilter.addEventListener('click', () => renderTasks('completed'));
+    // Function to update active filter highlight
+    function updateFilterHighlight(activeFilter) {
+        [allFilter, assignedFilter, completedFilter].forEach(filter => {
+            filter.classList.remove('active');
+        });
 
-
-    // Function to mark a task as completed
-    function completeTask(taskId, li) {
-        fetch(`http://localhost:3001/api/tasks/${taskId}/complete`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ status: 'completed' }),
-        })
-            .then(response => {
-                if (response.status === 401) {
-                    handleTokenRefresh(() => completeTask(taskId, li)); // Retry after refreshing the token
-                    throw new Error('Unauthorized');
-                }
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(updatedTask => {
-                console.log('Task marked as completed:', updatedTask);
-                li.classList.add('completed');
-                const taskIndex = tasks.findIndex(task => task.id === taskId);
-                if (taskIndex !== -1) tasks[taskIndex].status = 'completed';
-                updateCounts();
-            })
-            .catch(error => {
-                console.error('Error marking task as completed:', error);
-            });
+        if (activeFilter === 'all') allFilter.classList.add('active');
+        if (activeFilter === 'assigned') assignedFilter.classList.add('active');
+        if (activeFilter === 'completed') completedFilter.classList.add('active');
     }
+
+    allFilter.addEventListener('click', () => renderTasks('all'));
+    assignedFilter.addEventListener('click', () => renderTasks('assigned'));
+    completedFilter.addEventListener('click', () => renderTasks('completed'));
 
     // Function to edit a task
     function editTask(taskId, li) {
@@ -192,9 +176,41 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error deleting task:', error));
     }
 
+    // Function to mark a task as completed
+    function completeTask(taskId, li) {
+        fetch(`http://localhost:3001/api/tasks/${taskId}/complete`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: 'completed' }),
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    handleTokenRefresh(() => completeTask(taskId, li)); // Retry after refreshing the token
+                    throw new Error('Unauthorized');
+                }
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(updatedTask => {
+                console.log('Task marked as completed:', updatedTask);
+                li.classList.add('completed');
+                const taskIndex = tasks.findIndex(task => task.id === taskId);
+                if (taskIndex !== -1) tasks[taskIndex].status = 'completed';
+                renderTasks('all'); // Re-render tasks
+            })
+            .catch(error => {
+                console.error('Error marking task as completed:', error);
+            });
+    }
+
+    // Refresh token logic
     let isRefreshing = false;
 
-    async function handleTokenRefresh() {
+    async function handleTokenRefresh(callback) {
         if (isRefreshing) return; // Prevent multiple simultaneous refresh attempts
 
         isRefreshing = true;
@@ -206,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 console.log('Access token refreshed successfully');
+                if (callback) callback();
             } else {
                 console.error('Refresh token expired or invalid:', response.status);
                 window.location.href = '/login';

@@ -14,8 +14,8 @@ module.exports = {
         allowNull: false,
       },
       status: {
-        type: Sequelize.ENUM('assigned', 'completed', 'pending'),
-        defaultValue: 'pending',
+        type: Sequelize.ENUM('all', 'assigned', 'completed'),
+        defaultValue: 'assigned',
       },
       userid: {
         type: Sequelize.INTEGER,
