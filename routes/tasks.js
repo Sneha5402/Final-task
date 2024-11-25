@@ -8,14 +8,21 @@ router.get('/tasks', checkAuth, async (req, res) => {
         const userid =  req.cookies.userid;
 
         if (!userid) {
-            return res.status(401).send('Unauthorized: No user ID found');
+            return res.status(401).json({
+                status: "failure",
+                message: "Unauthorized: No user ID found"
+            });
         }
+        
         const task = await Task.findAll({
             where: { userid: userid },
         });
 
-        res.json(task);
-        console.log(task)
+        res.json({
+            status: 'success',
+            message: "Task created successfully",
+            data: task
+          });
     } catch (error) {
         res.status(500).send('Error fetching tasks');
     }

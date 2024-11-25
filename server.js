@@ -150,10 +150,9 @@ app.post('/refresh', (req, res) => {
             });
         }
 
-        const { accessToken, refreshToken: newRefreshToken } = generateTokens();
+        const { refreshToken: newRefreshToken } = generateTokens();
 
         // Set the new tokens as cookies
-        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 }); // 1 minute
         res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
 
         console.log('Tokens refreshed successfully');
@@ -176,8 +175,12 @@ app.get('/todo', checkAuth, async (req, res) => {
 app.post('/tasks/create', authenticateUser, async (req, res) => {
     const { task, status } = req.body;
 
+   
     if (!task) {
-        return res.status(400).send('Task is required');
+        return res.status(400).json({
+            status: 'error',
+            message: 'Task is required',
+          });
     }
     try {
         const newTask = await Task.create({
@@ -196,7 +199,10 @@ app.post('/logout', (req, res) => {
     const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
-        return res.status(400).send('Refresh token is required for logout');
+        return res.status(400).json({
+            status: "failure",
+            message: "Refresh token is required for logout"
+        });
     }
 
     // Clear both the access token and refresh token cookies

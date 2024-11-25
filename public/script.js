@@ -31,9 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(fetchedTasks => {
-                tasks = fetchedTasks;
-                renderTasks('all');
-
+                if (fetchedTasks.status === 'success') { 
+                    tasks = fetchedTasks.data;
+                    renderTasks('all');
+                } else {
+                    throw new Error('Failed to fetch tasks');
+                }
+    
                 if (loadingSpinner) {
                     loadingSpinner.style.display = 'none';
                 }
