@@ -156,7 +156,8 @@ app.post('/refresh', (req, res) => {
         res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
 
         console.log('Tokens refreshed successfully');
-        res.status(200).send('Token refreshed');
+        res.status(200).json({ status: 'success', message: 'Token refreshed' });
+
     }catch (error) {
         return res.status(500).json({
             status: 'error',
@@ -194,6 +195,7 @@ app.post('/tasks/create', authenticateUser, async (req, res) => {
         res.status(500).send('Error creating task');
     }
 });
+
 // Logout Route
 app.post('/logout', (req, res) => {
     const { refreshToken } = req.cookies;
@@ -204,10 +206,6 @@ app.post('/logout', (req, res) => {
             message: "Refresh token is required for logout"
         });
     }
-
-    // Clear both the access token and refresh token cookies
-    res.clearCookie('accessToken', { httpOnly: true, });
-    res.clearCookie('refreshToken', { httpOnly: true, });
 
     res.redirect('/login'); 
 });
