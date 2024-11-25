@@ -10,7 +10,6 @@ const tasksRouter = require('./routes/tasks');
 const corsMiddleware = require('./cors/cors');
 const cookieParser = require('cookie-parser');
 const authenticateUser = require('./controllers/authenticateUser');
-const checkAuth = require('./controllers/checkAuth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -169,7 +168,7 @@ app.post('/refresh', (req, res) => {
 
 
 // ToDo page
-app.get('/todo', checkAuth, async (req, res) => {
+app.get('/todo', authenticateUser, async (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'todo.html'));
 });
 
@@ -213,7 +212,7 @@ app.post('/logout', (req, res) => {
 
 
 // Soft delete route
-app.post('/delete', checkAuth, async (req, res) => {
+app.post('/delete', authenticateUser, async (req, res) => {
     try {
         const userId = req.userid;
 

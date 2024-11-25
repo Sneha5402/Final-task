@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const  Task  = require('../models/task');
-const checkAuth = require('../controllers/checkAuth');
+const authenticateUser = require('../controllers/authenticateUser');
 
-router.get('/tasks', checkAuth, async (req, res) => {
+router.get('/tasks', authenticateUser, async (req, res) => {
     try {
         const userid =  req.cookies.userid;
 
