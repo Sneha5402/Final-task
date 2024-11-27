@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetchTasks();
-
     // Function to fetch tasks
     function fetchTasks() {
         fetch('http://localhost:3001/api/tasks', {
@@ -50,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    
     // Function to render tasks based on the selected filter
     function renderTasks(filter) {
         taskList.innerHTML = '';
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         isRefreshing = true;
         try {
-            const response = await fetch('/refresh', {
+            const response = await fetch('api/auth/refresh', {
                 method: 'POST',
                 credentials: 'include',
             });

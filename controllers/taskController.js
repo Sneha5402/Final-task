@@ -1,9 +1,29 @@
-const express = require('express');
-const router = express.Router();
-const  Task  = require('../models/task');
-const authenticateUser = require('../controllers/authenticateUser');
+const Task = require('../models/task');
 
-router.get('/tasks', authenticateUser, async (req, res) => {
+const createTask = async (req, res) => {
+    const { task, status } = req.body;
+
+    if (!task) {
+        return res.status(400).json({
+            status: 'error',
+            message: 'Task is required',
+        });
+    }
+
+    try {
+        const newTask = await Task.create({
+            task,
+            status,
+            userid: req.userid,
+        });
+        console.log('Task created:', newTask);
+        res.redirect('/todo');
+    } catch (error) {
+        res.status(500).send('Error creating task');
+    }
+};
+
+const getTasks = async (req, res) => {
     try {
         const userid = req.cookies.userid;
 
@@ -12,23 +32,20 @@ router.get('/tasks', authenticateUser, async (req, res) => {
                 status: "failure",
                 message: "Unauthorized: No user ID found"
             });
-        }
-        else {
-            const task = await Task.findAll({
-                where: { userid: userid },
-            });
+        } else {
+            const tasks = await Task.findAll({ where: { userid: userid } });
             res.json({
                 status: 'success',
-                message: "Task created successfully",
-                data: task
+                message: "Task fetched successfully",
+                data: tasks
             });
         }
     } catch (error) {
         res.status(500).send('Error fetching tasks');
     }
-});
+};
 
-router.get('/tasks/:id', async (req, res) => {
+const getTaskById = async (req, res) => {
     try {
         const taskId = req.params.id;
         const task = await Task.findOne({ where: { id: taskId } });
@@ -41,25 +58,22 @@ router.get('/tasks/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Unable to fetch task' });
     }
-});
+};
 
-// Edit the task
-router.put('/edittask/:id/edit', async (req, res) => {
+const updateTask = async (req, res) => {
     try {
         const taskId = req.params.id;
         const task = req.body.task;
- 
+
         if (!task || typeof task !== 'string' || task.trim() === '') {
             res.status(400).json({ error: 'Task name cannot be empty or invalid' });
         }
 
         const [updated] = await Task.update({ task }, { where: { id: taskId } });
-        console.log('Update Result:', updated);
 
         if (updated === 0) {
             res.status(404).json({ error: 'Task not found' });
-        }
-        else {
+        } else {
             const updatedTask = await Task.findOne({ where: { id: taskId } });
             res.json({
                 success: true,
@@ -72,10 +86,9 @@ router.put('/edittask/:id/edit', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Unable to update task' });
     }
-});
+};
 
-// Delete a specific task by ID
-router.delete('/deletetask/:id/delete', async (req, res) => {
+const deleteTask = async (req, res) => {
     try {
         const taskId = req.params.id;
         const deleted = await Task.destroy({ where: { id: taskId } });
@@ -92,11 +105,9 @@ router.delete('/deletetask/:id/delete', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Unable to delete task' });
     }
-});
+};
 
-
-// Complete a task
-router.put('/tasks/:id/complete', async (req, res) => {
+const completeTask = async (req, res) => {
     try {
         const taskId = req.params.id;
         const task = await Task.findOne({ where: { id: taskId } });
@@ -109,9 +120,15 @@ router.put('/tasks/:id/complete', async (req, res) => {
             res.status(200).json({ message: 'Task marked as completed', task });
         }
     } catch (error) {
-        console.error('Error completing task:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-});
+};
 
-module.exports = router;
+module.exports = {
+    createTask,
+    getTasks,
+    getTaskById,
+    updateTask,
+    deleteTask,
+    completeTask
+};

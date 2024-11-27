@@ -13,7 +13,7 @@
     <div class="container">
         <header><b>To-Do LIST</b></header>
 
-        <form action="/tasks/create" method="POST" class="text">
+        <form action="api/tasks/create" method="POST" class="text">
             <input type="text" id="task" name="task" placeholder="Enter your task" required>
             <button type="submit" class="text-btn">Add Task</button>
         </form>
@@ -36,7 +36,7 @@
         </div>
 
         <!-- Logout Button -->
-        <form action="/logout" method="POST">
+        <form action="api/auth/logout" method="POST">
             <button type="submit" class="logout-btn">Logout</button>
         </form>
     </div>
