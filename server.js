@@ -64,7 +64,7 @@ app.post('/signup', async (req, res) => {
         res.status(409).json({
             status: 'error',
             message: 'User already exists',
-          });
+        });
     }
 });
 
@@ -79,15 +79,15 @@ app.post('/login', async (req, res) => {
             message: 'Email and password are required',
         });
     }
-    
+
     try {
-        const user = await User.findOne({ where: { email, isDeleted: 0 } }); 
+        const user = await User.findOne({ where: { email, isDeleted: 0 } });
 
         if (!user) {
             return res.status(404).json({
                 status: 'error',
                 message: 'User not found',
-              });
+            });
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
@@ -102,14 +102,14 @@ app.post('/login', async (req, res) => {
         const { accessToken, refreshToken } = generateTokens();
 
         // Set tokens as cookies
-        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 }); 
+        res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 });
         res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
 
         res.cookie('userid', user.userid, { httpOnly: true, });
-          return res.status(200).json({
+        return res.status(200).json({
             status: 'success',
             message: 'Login successful',
-            redirect: '/todo', 
+            redirect: '/todo',
         });
     }
     catch (error) {
@@ -123,7 +123,7 @@ app.post('/login', async (req, res) => {
 // Utility function to validate refresh tokens
 const isValidRefreshToken = (token) => {
     try {
-        return typeof token === 'string' && token.length > 0; 
+        return typeof token === 'string' && token.length > 0;
     } catch (error) {
         console.error('Invalid refresh token:', error);
         return false;
@@ -139,7 +139,7 @@ app.post('/refresh', (req, res) => {
             data: null
         });
     }
-    
+
     try {
         if (!isValidRefreshToken(refreshToken)) {
             return res.status(403).json({
@@ -157,7 +157,7 @@ app.post('/refresh', (req, res) => {
         console.log('Tokens refreshed successfully');
         res.status(200).json({ status: 'success', message: 'Token refreshed' });
 
-    }catch (error) {
+    } catch (error) {
         return res.status(500).json({
             status: 'error',
             message: 'An error occurred while processing the refresh token',
@@ -175,12 +175,11 @@ app.get('/todo', authenticateUser, async (req, res) => {
 app.post('/tasks/create', authenticateUser, async (req, res) => {
     const { task, status } = req.body;
 
-   
     if (!task) {
         return res.status(400).json({
             status: 'error',
             message: 'Task is required',
-          });
+        });
     }
     try {
         const newTask = await Task.create({
@@ -206,7 +205,7 @@ app.post('/logout', (req, res) => {
         });
     }
 
-    res.redirect('/login'); 
+    res.redirect('/login');
 });
 
 

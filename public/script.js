@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const trimmedTaskName = newTaskName.trim();
         taskNameElement.textContent = trimmedTaskName;
 
-        fetch(`http://localhost:3001/api/tasks/${taskId}`, {
+        fetch(`http://localhost:3001/api/edittask/${taskId}/edit`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.remove();
         }
 
-        fetch(`http://localhost:3001/api/tasks/${taskId}`, {
+        fetch(`http://localhost:3001/api/deletetask/${taskId}/delete`, {
             method: 'DELETE',
             credentials: 'include',
         })
