@@ -18,6 +18,8 @@ app.use(corsMiddleware);
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api', taskRoutes);
@@ -38,8 +40,6 @@ app.get('/signup', (req, res) => {
 app.get('/todo', authenticateUser, async (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'todo.html'));
 });
-
-
 
 // Database connection and server startup
 sequelize.authenticate()

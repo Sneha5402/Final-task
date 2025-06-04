@@ -1,0 +1,628 @@
+2024-12-16 12:21:15 [INFO]: User logged in: snehasakthi02@gmail.com
+2024-12-16 12:24:13 [INFO]: User logged in: snehasakthi02@gmail.com
+2024-12-16 12:24:13 [INFO]: Fetched 5 tasks for user ID: 1
+2024-12-16 12:24:33 [INFO]: Task deleted successfully: ID 4
+2024-12-16 12:24:37 [INFO]: Task updated successfully: {"id":6,"task":"task3","status":"assigned","userid":1,"createdAt":"2024-12-13T12:56:36.000Z","updatedAt":"2024-12-16T06:54:37.000Z"}
+2024-12-16 12:24:39 [INFO]: Task marked as completed: {"id":7,"task":"hi","status":"completed","userid":1,"createdAt":"2024-12-16T06:51:30.000Z","updatedAt":"2024-12-16T06:54:39.941Z"}
+2024-12-16 12:25:04 [ERROR]: Error during token refresh: isValidRefreshToken is not defined
+2024-12-16 12:26:23 [INFO]: User logged in: snehasakthi02@gmail.com
+2024-12-16 12:26:24 [INFO]: Fetched 4 tasks for user ID: 1
+2024-12-16 12:27:14 [INFO]: Refresh token successfully refreshed
+2024-12-19 13:37:54 [WARN]: Login attempt failed: User not found (snehasakthi02@gmail.com)
+2024-12-19 13:43:56 [INFO]: New user created: Sneha (snehasakthi02@gmail.com)
+2024-12-19 13:44:11 [INFO]: User logged in: snehasakthi02@gmail.com
+2024-12-19 13:44:12 [INFO]: Fetched 0 tasks for user ID: 1
+2024-12-19 13:44:56 [INFO]: Task created successfully: {"status":"assigned","id":1,"task":"task1","userid":"1","updatedAt":"2024-12-19T08:14:56.096Z","createdAt":"2024-12-19T08:14:56.096Z"}
+2024-12-19 13:44:56 [INFO]: Fetched 1 tasks for user ID: 1
+2024-12-19 13:45:09 [INFO]: Task marked as completed: {"id":1,"task":"task1","status":"completed","userid":1,"createdAt":"2024-12-19T08:14:56.000Z","updatedAt":"2024-12-19T08:15:09.637Z"}
+2024-12-19 13:45:14 [INFO]: Task updated successfully: {"id":1,"task":"task2","status":"completed","userid":1,"createdAt":"2024-12-19T08:14:56.000Z","updatedAt":"2024-12-19T08:15:14.000Z"}
+2024-12-19 13:45:45 [INFO]: Task deleted successfully: ID 1
+2024-12-19 13:45:46 [INFO]: Refresh token successfully refreshed
+2024-12-19 13:45:51 [INFO]: User logged out successfully
+2024-12-19 15:25:27 [INFO]: New user created: Sneha (snehasakthi02@gmail.com)
+2024-12-19 15:37:34 [INFO]: User logged in: snehasakthi02@gmail.com
+2024-12-19 15:37:34 [INFO]: Fetched 0 tasks for user ID: 1
+2024-12-19 15:38:02 [INFO]: Task created successfully: {"status":"assigned","id":1,"task":"task1","userid":"1","updatedAt":"2024-12-19T10:08:02.819Z","createdAt":"2024-12-19T10:08:02.819Z"}
+2024-12-19 15:38:02 [INFO]: Fetched 1 tasks for user ID: 1
+2024-12-19 15:38:10 [INFO]: Task created successfully: {"status":"assigned","id":2,"task":"task2","userid":"1","updatedAt":"2024-12-19T10:08:10.954Z","createdAt":"2024-12-19T10:08:10.954Z"}
+2024-12-19 15:38:11 [INFO]: Fetched 2 tasks for user ID: 1
+2024-12-19 15:38:47 [INFO]: Task created successfully: {"status":"assigned","id":3,"task":"task","userid":"1","updatedAt":"2024-12-19T10:08:47.906Z","createdAt":"2024-12-19T10:08:47.906Z"}
+2024-12-19 15:38:48 [INFO]: Fetched 3 tasks for user ID: 1
+2024-12-19 15:39:38 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:40:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:40:48 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:41:18 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:42:08 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:42:58 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:43:59 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:44:43 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:45:09 [INFO]: Task marked as completed: {"id":1,"task":"task1","status":"completed","userid":1,"createdAt":"2024-12-19T10:08:02.000Z","updatedAt":"2024-12-19T10:15:09.923Z"}
+2024-12-19 15:45:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:46:06 [INFO]: User logged in: snehasakthi02@gmail.com
+2024-12-19 15:46:06 [INFO]: Fetched 3 tasks for user ID: 1
+2024-12-19 15:46:14 [INFO]: Task created successfully: {"status":"assigned","id":4,"task":"task3","userid":"1","updatedAt":"2024-12-19T10:16:14.505Z","createdAt":"2024-12-19T10:16:14.505Z"}
+2024-12-19 15:46:14 [INFO]: Fetched 4 tasks for user ID: 1
+2024-12-19 15:46:18 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:47:05 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:47:08 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:47:55 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:47:58 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:48:15 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:48:45 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:48:48 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:49:34 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:49:38 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:50:25 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:50:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:51:26 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:51:26 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:52:08 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:52:27 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:52:58 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:53:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:53:59 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:54:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:55:00 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:55:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:55:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:56:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:56:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:57:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:57:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:58:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:58:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:59:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 15:59:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:00:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:00:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:01:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:01:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:02:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:02:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:03:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:03:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:04:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:04:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:05:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:05:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:06:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:06:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:07:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:07:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:08:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:08:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:09:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:09:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:10:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:10:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:11:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:11:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:12:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:12:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:13:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:13:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:14:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:14:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:15:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:15:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:16:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:16:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:17:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:17:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:18:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:18:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:19:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:19:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:20:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:20:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:21:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:21:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:22:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:22:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:23:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:23:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:24:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:24:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:25:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:25:28 [INFO]: Refresh token successfully refreshed
+2024-12-19 16:26:07 [INFO]: User logged out successfully
+2024-12-26 11:07:34 [INFO]: User logged in: snehasakthi02@gmail.com
+2024-12-26 11:07:34 [INFO]: Fetched 4 tasks for user ID: 1
+2024-12-26 11:07:40 [INFO]: Task created successfully: {"status":"assigned","id":5,"task":"task3","userid":"1","updatedAt":"2024-12-26T05:37:40.454Z","createdAt":"2024-12-26T05:37:40.454Z"}
+2024-12-26 11:07:40 [INFO]: Fetched 5 tasks for user ID: 1
+2024-12-26 11:07:44 [INFO]: Task marked as completed: {"id":4,"task":"task3","status":"completed","userid":1,"createdAt":"2024-12-19T10:16:14.000Z","updatedAt":"2024-12-26T05:37:44.146Z"}
+2024-12-26 11:07:48 [INFO]: Task created successfully: {"status":"assigned","id":6,"task":"hi","userid":"1","updatedAt":"2024-12-26T05:37:48.469Z","createdAt":"2024-12-26T05:37:48.469Z"}
+2024-12-26 11:07:48 [INFO]: Fetched 6 tasks for user ID: 1
+2024-12-26 11:08:38 [INFO]: Refresh token successfully refreshed
+2024-12-26 11:09:28 [INFO]: Refresh token successfully refreshed
+2025-01-21 10:15:43 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-01-21 10:15:44 [INFO]: Fetched 6 tasks for user ID: 1
+2025-01-21 10:16:34 [WARN]: Login attempt failed: User not found (task@gmail.com)
+2025-01-21 10:16:36 [WARN]: Login attempt failed: User not found (task@gmail.com)
+2025-01-21 10:16:37 [WARN]: Login attempt failed: User not found (task@gmail.com)
+2025-01-21 10:16:38 [WARN]: Login attempt failed: User not found (task@gmail.com)
+2025-01-21 10:16:38 [WARN]: Login attempt failed: User not found (task@gmail.com)
+2025-01-21 10:17:31 [WARN]: Login attempt failed: User not found (task@gmail.com)
+2025-01-21 10:20:09 [INFO]: Fetched 6 tasks for user ID: 1
+2025-01-21 10:20:16 [INFO]: Task deleted successfully: ID 2
+2025-01-21 10:20:26 [INFO]: User logged out successfully
+2025-01-22 16:54:06 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-01-22 16:54:06 [INFO]: Fetched 5 tasks for user ID: 1
+2025-01-22 16:56:19 [INFO]: User logged out successfully
+2025-02-04 11:34:02 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-04 11:34:02 [INFO]: Fetched 5 tasks for user ID: 1
+2025-02-04 11:34:06 [INFO]: User logged out successfully
+2025-02-04 11:36:53 [WARN]: Login attempt failed: User not found (snehasakthi02@gmail.com)
+2025-02-04 11:36:55 [WARN]: Login attempt failed: User not found (snehasakthi02@gmail.com)
+2025-02-04 11:36:56 [WARN]: Login attempt failed: User not found (snehasakthi02@gmail.com)
+2025-02-04 11:37:07 [INFO]: New user created: Sneha (snehasakthi02@gmail.com)
+2025-02-04 11:37:13 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-04 11:37:13 [INFO]: Fetched 0 tasks for user ID: 1
+2025-02-04 11:37:16 [INFO]: Task created successfully: {"status":"assigned","id":1,"task":"hi","userid":"1","updatedAt":"2025-02-04T06:07:16.309Z","createdAt":"2025-02-04T06:07:16.309Z"}
+2025-02-04 11:37:16 [INFO]: Fetched 1 tasks for user ID: 1
+2025-02-04 11:37:17 [INFO]: Task marked as completed: {"id":1,"task":"hi","status":"completed","userid":1,"image":null,"createdAt":"2025-02-04T06:07:16.000Z","updatedAt":"2025-02-04T06:07:17.981Z"}
+2025-02-04 11:37:23 [INFO]: Task created successfully: {"status":"assigned","id":2,"task":"task2","userid":"1","updatedAt":"2025-02-04T06:07:22.997Z","createdAt":"2025-02-04T06:07:22.997Z"}
+2025-02-04 11:37:23 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-04 11:59:17 [INFO]: New user created: Sneha (snehasakthi02@gmail.com)
+2025-02-04 11:59:23 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-04 11:59:23 [INFO]: Fetched 0 tasks for user ID: 1
+2025-02-04 12:11:19 [WARN]: Task creation failed: Task name is required
+2025-02-04 12:11:42 [INFO]: Task created successfully: {"status":"assigned","id":1,"task":"hi","userid":"1","image":null,"updatedAt":"2025-02-04T06:41:42.310Z","createdAt":"2025-02-04T06:41:42.310Z"}
+2025-02-04 12:11:42 [INFO]: Fetched 1 tasks for user ID: 1
+2025-02-04 12:11:56 [WARN]: Task creation failed: Task name is required
+2025-02-04 12:16:00 [INFO]: Task created successfully: {"status":"assigned","id":2,"task":"task1","userid":"1","image":null,"updatedAt":"2025-02-04T06:46:00.409Z","createdAt":"2025-02-04T06:46:00.409Z"}
+2025-02-04 12:16:00 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-04 12:16:32 [WARN]: Task creation failed: Task name is required
+2025-02-04 12:18:48 [INFO]: Task created successfully: {"id":3,"task":"My new task","status":"assigned","image":"1738651728830.png","updatedAt":"2025-02-04T06:48:48.834Z","createdAt":"2025-02-04T06:48:48.834Z"}
+2025-02-04 12:36:47 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-04 12:37:58 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-04 12:38:27 [INFO]: Task created successfully: {"id":4,"task":"My new task 2","status":"assigned","image":"1738652907399.png","updatedAt":"2025-02-04T07:08:27.406Z","createdAt":"2025-02-04T07:08:27.406Z"}
+2025-02-04 12:39:21 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-04 12:45:20 [INFO]: Task created successfully: {"id":5,"task":"My new task 3","status":"assigned","image":"1738653320064.PNG","updatedAt":"2025-02-04T07:15:20.068Z","createdAt":"2025-02-04T07:15:20.068Z"}
+2025-02-04 12:47:24 [INFO]: Task created successfully: {"id":6,"task":"My new task 3","status":"assigned","image":"1738653444290.PNG","updatedAt":"2025-02-04T07:17:24.292Z","createdAt":"2025-02-04T07:17:24.292Z"}
+2025-02-04 12:47:35 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-04 13:31:33 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-04 15:16:00 [INFO]: Refresh token successfully refreshed
+2025-02-05 14:16:43 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-05 14:16:43 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-05 14:20:02 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-05 14:23:50 [INFO]: Task created successfully: {"id":7,"task":"My new task 3","status":"assigned","image":"1738745630866.PNG","updatedAt":"2025-02-05T08:53:50.873Z","createdAt":"2025-02-05T08:53:50.873Z"}
+2025-02-05 14:24:06 [INFO]: Task created successfully: {"id":8,"task":"My new task 3","status":"assigned","image":"1738745646864.PNG","updatedAt":"2025-02-05T08:54:06.866Z","createdAt":"2025-02-05T08:54:06.866Z"}
+2025-02-05 14:25:25 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-05 14:27:34 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-05 14:38:15 [INFO]: Fetched 2 tasks for user ID: 1
+2025-02-05 14:43:43 [WARN]: Image not found: 1738745646864.PNG
+2025-02-05 14:43:43 [INFO]: Task deleted successfully: ID 8
+2025-02-05 14:48:36 [INFO]: Task created successfully: {"id":9,"task":"My new task 5","status":"assigned","image":"1738747116087.PNG","updatedAt":"2025-02-05T09:18:36.090Z","createdAt":"2025-02-05T09:18:36.090Z"}
+2025-02-05 14:49:59 [WARN]: Image not found: 1738653320064.PNG
+2025-02-05 14:49:59 [INFO]: Task deleted successfully: ID 5
+2025-02-05 15:01:52 [WARN]: Task creation failed: Invalid image type
+2025-02-05 15:03:05 [WARN]: Task creation failed: Image size exceeds the maximum limit
+2025-02-05 15:04:07 [INFO]: Task created successfully: {"id":10,"task":"My new task 5","status":"assigned","image":"1738748047686.PNG","updatedAt":"2025-02-05T09:34:07.691Z","createdAt":"2025-02-05T09:34:07.691Z"}
+2025-02-05 17:43:24 [INFO]: Task created successfully: {"id":11,"task":"My new task 5","status":"assigned","image":"1738757604177.PNG","updatedAt":"2025-02-05T12:13:24.183Z","createdAt":"2025-02-05T12:13:24.183Z"}
+2025-02-05 17:44:03 [ERROR]: Error fetching tasks: tasks is not defined
+2025-02-05 17:49:06 [INFO]: Task created successfully: {"id":12,"task":"My new task 5","status":"assigned","image":"1738757946118.PNG","updatedAt":"2025-02-05T12:19:06.123Z","createdAt":"2025-02-05T12:19:06.123Z"}
+2025-02-05 17:50:49 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-05 17:50:49 [ERROR]: Error fetching tasks: tasks is not defined
+2025-02-05 17:51:30 [ERROR]: Error fetching tasks: tasks is not defined
+2025-02-05 17:51:32 [INFO]: User logged out successfully
+2025-02-05 17:51:35 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-05 17:51:35 [ERROR]: Error fetching tasks: tasks is not defined
+2025-02-05 17:51:39 [INFO]: Task created successfully: {"status":"assigned","id":13,"task":"hi","userid":"1","image":null,"updatedAt":"2025-02-05T12:21:39.481Z","createdAt":"2025-02-05T12:21:39.481Z"}
+2025-02-05 17:51:39 [ERROR]: Error fetching tasks: tasks is not defined
+2025-02-05 17:52:35 [INFO]: User logged out successfully
+2025-02-05 17:52:39 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-05 17:52:39 [ERROR]: Error fetching tasks: tasks is not defined
+2025-02-05 17:55:03 [INFO]: User logged out successfully
+2025-02-05 17:55:07 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-05 18:00:10 [INFO]: Task created successfully: {"status":"assigned","id":14,"task":"task2","userid":"1","image":null,"updatedAt":"2025-02-05T12:30:10.551Z","createdAt":"2025-02-05T12:30:10.551Z"}
+2025-02-05 18:00:16 [INFO]: Task created successfully: {"status":"assigned","id":15,"task":"task2","userid":"1","image":null,"updatedAt":"2025-02-05T12:30:16.930Z","createdAt":"2025-02-05T12:30:16.930Z"}
+2025-02-05 18:05:40 [INFO]: Task created successfully: {"id":16,"task":"My new task 7","status":"assigned","userid":"1","image":"1738758940082.PNG","updatedAt":"2025-02-05T12:35:40.086Z","createdAt":"2025-02-05T12:35:40.086Z"}
+2025-02-05 18:07:23 [WARN]: Login attempt failed: User not found (task@gmail.com)
+2025-02-05 18:21:33 [INFO]: Task deleted successfully: ID 14
+2025-02-05 18:21:36 [INFO]: Task deleted successfully: ID 2
+2025-02-05 18:25:42 [INFO]: Task deleted successfully: ID 1
+2025-02-05 18:25:46 [INFO]: Task deleted successfully: ID 13
+2025-02-05 18:27:19 [INFO]: Task created successfully: {"id":17,"task":"My new task 5","status":"assigned","userid":"1","image":null,"updatedAt":"2025-02-05T12:57:19.663Z","createdAt":"2025-02-05T12:57:19.663Z"}
+2025-02-05 18:27:36 [INFO]: Task created successfully: {"id":18,"task":"My new task 5","status":"assigned","userid":"1","image":null,"updatedAt":"2025-02-05T12:57:36.659Z","createdAt":"2025-02-05T12:57:36.659Z"}
+2025-02-05 18:28:39 [INFO]: Task created successfully: {"id":19,"task":"My new task 7","status":"assigned","userid":"1","image":null,"updatedAt":"2025-02-05T12:58:39.846Z","createdAt":"2025-02-05T12:58:39.846Z"}
+2025-02-10 09:51:12 [INFO]: Task created successfully: {"id":20,"task":"My new task 5","status":"assigned","userid":"1","image":null,"updatedAt":"2025-02-10T04:21:12.576Z","createdAt":"2025-02-10T04:21:12.576Z"}
+2025-02-10 10:01:41 [INFO]: Task created successfully: {"id":21,"task":"My new task 5","status":"assigned","userid":"1","image":"1739161901231.png","updatedAt":"2025-02-10T04:31:41.242Z","createdAt":"2025-02-10T04:31:41.242Z"}
+2025-02-10 10:01:54 [INFO]: Task created successfully: {"id":22,"task":"My new task 5","status":"assigned","userid":"1","image":"1739161914629.PNG","updatedAt":"2025-02-10T04:31:54.633Z","createdAt":"2025-02-10T04:31:54.633Z"}
+2025-02-10 10:03:20 [INFO]: Task created successfully: {"id":23,"task":"My new task 5","status":"assigned","userid":"1","image":"1739162000733.png","updatedAt":"2025-02-10T04:33:20.737Z","createdAt":"2025-02-10T04:33:20.737Z"}
+2025-02-10 10:26:44 [INFO]: Task created successfully: {"id":24,"task":"My new task 5","status":"assigned","userid":"1","updatedAt":"2025-02-10T04:56:44.133Z","createdAt":"2025-02-10T04:56:44.133Z"}
+2025-02-10 10:29:06 [INFO]: Task created successfully: {"id":25,"task":"My new task 5","status":"assigned","userid":"1","updatedAt":"2025-02-10T04:59:06.290Z","createdAt":"2025-02-10T04:59:06.290Z"}
+2025-02-10 10:32:42 [INFO]: Task created successfully: {"id":26,"task":"My new task 5","status":"assigned","userid":"1","image":"1739163762839.png","updatedAt":"2025-02-10T05:02:42.843Z","createdAt":"2025-02-10T05:02:42.843Z"}
+2025-02-10 10:34:37 [INFO]: Task created successfully: {"id":27,"task":"My new task 5","status":"assigned","userid":"1","updatedAt":"2025-02-10T05:04:37.400Z","createdAt":"2025-02-10T05:04:37.400Z"}
+2025-02-10 10:36:20 [INFO]: Task created successfully: {"id":28,"task":"My new task 5","status":"assigned","userid":"1","updatedAt":"2025-02-10T05:06:20.386Z","createdAt":"2025-02-10T05:06:20.386Z"}
+2025-02-10 10:37:18 [INFO]: Task created successfully: {"id":29,"task":"My new task 5","status":"assigned","userid":"1","updatedAt":"2025-02-10T05:07:18.757Z","createdAt":"2025-02-10T05:07:18.757Z"}
+2025-02-10 10:38:56 [INFO]: Task created successfully: {"id":30,"task":"My new task 5","status":"assigned","userid":"1","updatedAt":"2025-02-10T05:08:56.642Z","createdAt":"2025-02-10T05:08:56.642Z"}
+2025-02-10 10:41:09 [ERROR]: Error creating task: image is not defined
+2025-02-10 10:42:15 [INFO]: Task created successfully: {"id":31,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739164335898.PNG\",\"1739164335898.png\",\"1739164335914.png\"]","updatedAt":"2025-02-10T05:12:15.926Z","createdAt":"2025-02-10T05:12:15.926Z"}
+2025-02-10 10:51:47 [INFO]: Task created successfully: {"id":32,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739164907177.PNG\",\"1739164907178.webp\"]","updatedAt":"2025-02-10T05:21:47.187Z","createdAt":"2025-02-10T05:21:47.187Z"}
+2025-02-10 14:19:11 [WARN]: Invalid file type: wp8238830.webp
+2025-02-10 14:22:47 [WARN]: Invalid filename: qrcode.png
+2025-02-10 14:23:48 [INFO]: Task created successfully: {"id":33,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739177628283.png\",\"1739177628283.PNG\",\"1739177628284.png\"]","updatedAt":"2025-02-10T08:53:48.298Z","createdAt":"2025-02-10T08:53:48.298Z"}
+2025-02-10 14:24:33 [WARN]: Invalid file type: wp8238830.webp
+2025-02-10 14:25:50 [INFO]: Task created successfully: {"id":34,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739177750777.png\",\"1739177750777.PNG\"]","updatedAt":"2025-02-10T08:55:50.781Z","createdAt":"2025-02-10T08:55:50.781Z"}
+2025-02-10 14:27:02 [INFO]: Task created successfully: {"id":35,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739177821978.png\",\"1739177821978.PNG\",\"1739177821979.PNG\",\"1739177821982.PNG\"]","updatedAt":"2025-02-10T08:57:01.988Z","createdAt":"2025-02-10T08:57:01.988Z"}
+2025-02-10 14:27:14 [INFO]: Task created successfully: {"id":36,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739177834284.png\",\"1739177834284.PNG\",\"1739177834285.PNG\",\"1739177834286.PNG\",\"1739177834289.png\"]","updatedAt":"2025-02-10T08:57:14.295Z","createdAt":"2025-02-10T08:57:14.295Z"}
+2025-02-10 14:27:41 [WARN]: File too large: wp8238830.png
+2025-02-10 14:28:13 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-10 14:28:17 [INFO]: Task deleted successfully: ID 15
+2025-02-10 14:28:19 [WARN]: Image not found: 1738758940082.PNG
+2025-02-10 14:28:19 [INFO]: Task deleted successfully: ID 16
+2025-02-10 14:28:21 [INFO]: Task deleted successfully: ID 17
+2025-02-10 14:28:23 [INFO]: Task deleted successfully: ID 18
+2025-02-10 14:28:24 [INFO]: Task deleted successfully: ID 19
+2025-02-10 14:28:26 [INFO]: Task deleted successfully: ID 20
+2025-02-10 14:28:28 [WARN]: Image not found: 1739161901231.png
+2025-02-10 14:28:28 [INFO]: Task deleted successfully: ID 21
+2025-02-10 14:28:30 [WARN]: Image not found: 1739161914629.PNG
+2025-02-10 14:28:30 [INFO]: Task deleted successfully: ID 22
+2025-02-10 14:28:32 [WARN]: Image not found: 1739162000733.png
+2025-02-10 14:28:32 [INFO]: Task deleted successfully: ID 23
+2025-02-10 14:28:33 [INFO]: Task deleted successfully: ID 24
+2025-02-10 14:28:35 [INFO]: Task deleted successfully: ID 25
+2025-02-10 14:28:37 [WARN]: Image not found: 1739163762839.png
+2025-02-10 14:28:37 [INFO]: Task deleted successfully: ID 26
+2025-02-10 14:28:39 [INFO]: Task deleted successfully: ID 27
+2025-02-10 14:28:40 [INFO]: Task deleted successfully: ID 28
+2025-02-10 14:28:42 [INFO]: Task deleted successfully: ID 29
+2025-02-10 14:28:44 [INFO]: Task deleted successfully: ID 30
+2025-02-10 14:28:47 [WARN]: Image not found: ["1739164335898.PNG","1739164335898.png","1739164335914.png"]
+2025-02-10 14:28:47 [INFO]: Task deleted successfully: ID 31
+2025-02-10 14:28:49 [WARN]: Image not found: ["1739164907177.PNG","1739164907178.webp"]
+2025-02-10 14:28:49 [INFO]: Task deleted successfully: ID 32
+2025-02-10 14:28:51 [WARN]: Image not found: ["1739177628283.png","1739177628283.PNG","1739177628284.png"]
+2025-02-10 14:28:51 [INFO]: Task deleted successfully: ID 33
+2025-02-10 17:00:27 [ERROR]: Error creating task: string violation: image cannot be an array or an object
+2025-02-10 17:00:53 [INFO]: Task created successfully: {"id":37,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739187053068.png\",\"1739187053069.PNG\"]","updatedAt":"2025-02-10T11:30:53.074Z","createdAt":"2025-02-10T11:30:53.074Z"}
+2025-02-10 17:39:58 [INFO]: Task created successfully: {"id":38,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739189398932.png\",\"1739189398932.PNG\",\"1739189398934.png\"]","updatedAt":"2025-02-10T12:09:58.945Z","createdAt":"2025-02-10T12:09:58.945Z"}
+2025-02-10 17:40:53 [INFO]: Task created successfully: {"id":39,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739189453135.png\",\"1739189453135.PNG\",\"1739189453136.png\"]","updatedAt":"2025-02-10T12:10:53.139Z","createdAt":"2025-02-10T12:10:53.139Z"}
+2025-02-10 17:50:47 [INFO]: Task created successfully: {"id":40,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739190047927.png\",\"1739190047928.PNG\",\"1739190047929.png\"]","updatedAt":"2025-02-10T12:20:47.936Z","createdAt":"2025-02-10T12:20:47.936Z"}
+2025-02-10 18:11:37 [INFO]: Task created successfully: {"id":41,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"1739191297265.png\",\"1739191297266.PNG\",\"1739191297268.png\"]","updatedAt":"2025-02-10T12:41:37.275Z","createdAt":"2025-02-10T12:41:37.275Z"}
+2025-02-11 12:08:43 [INFO]: Task created successfully: {"id":42,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739255922999.png\",\"task_img_1739255923000.PNG\",\"task_img_1739255923001.png\"]","updatedAt":"2025-02-11T06:38:43.010Z","createdAt":"2025-02-11T06:38:43.010Z"}
+2025-02-11 12:09:32 [INFO]: Task created successfully: {"id":43,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739255972125.png\",\"task_img_1739255972126.PNG\",\"task_img_1739255972128.png\"]","updatedAt":"2025-02-11T06:39:32.135Z","createdAt":"2025-02-11T06:39:32.135Z"}
+2025-02-11 14:45:18 [INFO]: Task created successfully: {"id":44,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739265318336.png\"]","updatedAt":"2025-02-11T09:15:18.346Z","createdAt":"2025-02-11T09:15:18.346Z"}
+2025-02-11 14:45:54 [INFO]: Task created successfully: {"id":45,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739265354320.png\"]","updatedAt":"2025-02-11T09:15:54.324Z","createdAt":"2025-02-11T09:15:54.324Z"}
+2025-02-11 14:46:54 [INFO]: Task created successfully: {"id":46,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739265414089.png\"]","updatedAt":"2025-02-11T09:16:54.095Z","createdAt":"2025-02-11T09:16:54.095Z"}
+2025-02-11 15:26:35 [INFO]: Task created successfully: {"id":47,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739267795002.png\"]","updatedAt":"2025-02-11T09:56:35.004Z","createdAt":"2025-02-11T09:56:35.004Z"}
+2025-02-11 15:34:36 [WARN]: Duplicate image detected: qrcode.png
+2025-02-11 15:34:52 [WARN]: Duplicate image detected: ss.PNG
+2025-02-11 15:35:19 [WARN]: Duplicate image detected: ss.PNG
+2025-02-12 10:04:22 [INFO]: Task created successfully: {"id":48,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739334862050.PNG\"]","updatedAt":"2025-02-12T04:34:22.058Z","createdAt":"2025-02-12T04:34:22.058Z"}
+2025-02-12 10:08:30 [INFO]: Task created successfully: {"id":49,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739335110171.PNG\"]","updatedAt":"2025-02-12T04:38:30.175Z","createdAt":"2025-02-12T04:38:30.175Z"}
+2025-02-12 10:08:33 [INFO]: Task created successfully: {"id":50,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739335113506.PNG\"]","updatedAt":"2025-02-12T04:38:33.507Z","createdAt":"2025-02-12T04:38:33.507Z"}
+2025-02-12 10:09:15 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-12 10:09:19 [WARN]: Image not found: ["1739177750777.png","1739177750777.PNG"]
+2025-02-12 10:09:19 [INFO]: Task deleted successfully: ID 34
+2025-02-12 10:09:21 [WARN]: Image not found: ["1739177821978.png","1739177821978.PNG","1739177821979.PNG","1739177821982.PNG"]
+2025-02-12 10:09:21 [INFO]: Task deleted successfully: ID 35
+2025-02-12 10:09:22 [WARN]: Image not found: ["1739177834284.png","1739177834284.PNG","1739177834285.PNG","1739177834286.PNG","1739177834289.png"]
+2025-02-12 10:09:22 [INFO]: Task deleted successfully: ID 36
+2025-02-12 10:09:24 [WARN]: Image not found: ["1739187053068.png","1739187053069.PNG"]
+2025-02-12 10:09:24 [INFO]: Task deleted successfully: ID 37
+2025-02-12 10:09:26 [WARN]: Image not found: ["1739189398932.png","1739189398932.PNG","1739189398934.png"]
+2025-02-12 10:09:26 [INFO]: Task deleted successfully: ID 38
+2025-02-12 10:09:28 [WARN]: Image not found: ["1739189453135.png","1739189453135.PNG","1739189453136.png"]
+2025-02-12 10:09:28 [INFO]: Task deleted successfully: ID 39
+2025-02-12 10:09:29 [WARN]: Image not found: ["1739190047927.png","1739190047928.PNG","1739190047929.png"]
+2025-02-12 10:09:29 [INFO]: Task deleted successfully: ID 40
+2025-02-12 10:09:31 [WARN]: Image not found: ["1739191297265.png","1739191297266.PNG","1739191297268.png"]
+2025-02-12 10:09:31 [INFO]: Task deleted successfully: ID 41
+2025-02-12 10:09:33 [WARN]: Image not found: ["task_img_1739255922999.png","task_img_1739255923000.PNG","task_img_1739255923001.png"]
+2025-02-12 10:09:33 [INFO]: Task deleted successfully: ID 42
+2025-02-12 10:09:34 [WARN]: Image not found: ["task_img_1739255972125.png","task_img_1739255972126.PNG","task_img_1739255972128.png"]
+2025-02-12 10:09:34 [INFO]: Task deleted successfully: ID 43
+2025-02-12 10:09:37 [WARN]: Image not found: ["task_img_1739265318336.png"]
+2025-02-12 10:09:37 [INFO]: Task deleted successfully: ID 44
+2025-02-12 10:09:38 [WARN]: Image not found: ["task_img_1739265354320.png"]
+2025-02-12 10:09:38 [INFO]: Task deleted successfully: ID 45
+2025-02-12 10:09:40 [WARN]: Image not found: ["task_img_1739265414089.png"]
+2025-02-12 10:09:40 [INFO]: Task deleted successfully: ID 46
+2025-02-12 10:09:44 [WARN]: Image not found: ["task_img_1739267795002.png"]
+2025-02-12 10:09:44 [INFO]: Task deleted successfully: ID 47
+2025-02-12 10:11:23 [INFO]: Task created successfully: {"id":51,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739335283752.PNG\"]","updatedAt":"2025-02-12T04:41:23.756Z","createdAt":"2025-02-12T04:41:23.756Z"}
+2025-02-12 10:11:27 [INFO]: Task created successfully: {"id":52,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739335287834.PNG\"]","updatedAt":"2025-02-12T04:41:27.837Z","createdAt":"2025-02-12T04:41:27.837Z"}
+2025-02-12 10:15:35 [INFO]: Task created successfully: {"id":53,"task":"My new task 5","status":"assigned","userid":"1","image":"[\"task_img_1739335535862.PNG\",\"task_img_1739335535862.PNG\"]","updatedAt":"2025-02-12T04:45:35.871Z","createdAt":"2025-02-12T04:45:35.871Z"}
+2025-02-12 10:15:41 [WARN]: Duplicate image detected: ss.PNG
+2025-02-12 10:15:55 [INFO]: Task created successfully: {"id":54,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739335555766.PNG\",\"task_img_1739335555766.PNG\"]","updatedAt":"2025-02-12T04:45:55.769Z","createdAt":"2025-02-12T04:45:55.769Z"}
+2025-02-12 10:16:07 [WARN]: Duplicate image detected: ss.PNG
+2025-02-12 10:16:18 [WARN]: Duplicate image detected: anime.png
+2025-02-12 10:16:25 [WARN]: Duplicate image detected: anime.png
+2025-02-12 10:16:46 [INFO]: Task created successfully: {"id":55,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739335606305.PNG\",\"task_img_1739335606305.PNG\"]","updatedAt":"2025-02-12T04:46:46.307Z","createdAt":"2025-02-12T04:46:46.307Z"}
+2025-02-12 10:17:17 [WARN]: Duplicate image detected: qrcode.png
+2025-02-12 10:17:25 [WARN]: Duplicate image detected: fg.PNG
+2025-02-12 10:17:31 [WARN]: Duplicate image detected: ee.PNG
+2025-02-12 10:17:39 [INFO]: Task created successfully: {"id":56,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739335659435.PNG\",\"task_img_1739335659435.PNG\"]","updatedAt":"2025-02-12T04:47:39.436Z","createdAt":"2025-02-12T04:47:39.436Z"}
+2025-02-12 10:21:28 [INFO]: Task created successfully: {"id":57,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739335888744_85giapksb.PNG\",\"task_img_1739335888745_zbufba60c.PNG\",\"task_img_1739335888745_aq0ecs495.png\",\"task_img_1739335888744_85giapksb.PNG\",\"task_img_1739335888745_zbufba60c.PNG\",\"task_img_1739335888745_aq0ecs495.png\"]","updatedAt":"2025-02-12T04:51:28.755Z","createdAt":"2025-02-12T04:51:28.755Z"}
+2025-02-12 10:21:35 [WARN]: Duplicate image detected: fg.PNG
+2025-02-12 10:21:44 [WARN]: Duplicate image detected: proje.PNG
+2025-02-12 10:22:02 [INFO]: Task created successfully: {"id":58,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739335922212_g2tknyfkw.PNG\",\"task_img_1739335922212_vx1vfqj8a.png\",\"task_img_1739335922213_85foge5h2.PNG\",\"task_img_1739335922212_g2tknyfkw.PNG\",\"task_img_1739335922212_vx1vfqj8a.png\",\"task_img_1739335922213_85foge5h2.PNG\"]","updatedAt":"2025-02-12T04:52:02.217Z","createdAt":"2025-02-12T04:52:02.217Z"}
+2025-02-12 10:52:31 [INFO]: Task created successfully: {"id":59,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739337751946_0.sa1ve4l3hq.PNG\",\"task_img_1739337751946_0.sa1ve4l3hq.PNG\"]","updatedAt":"2025-02-12T05:22:31.952Z","createdAt":"2025-02-12T05:22:31.952Z"}
+2025-02-12 14:39:49 [INFO]: Task created successfully: {"id":60,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739351388956_0.6siosjbvqz4.PNG\",\"task_img_1739351388956_0.6siosjbvqz4.PNG\"]","updatedAt":"2025-02-12T09:09:48.969Z","createdAt":"2025-02-12T09:09:48.969Z"}
+2025-02-12 14:39:52 [WARN]: Duplicate image detected: proje.PNG
+2025-02-12 14:56:50 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-12 15:01:53 [INFO]: User logged out successfully
+2025-02-12 15:01:58 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-12 15:02:09 [INFO]: Task created successfully: {"status":"assigned","id":61,"task":"task2","userid":"1","image":"[]","updatedAt":"2025-02-12T09:32:09.895Z","createdAt":"2025-02-12T09:32:09.895Z"}
+2025-02-12 15:06:59 [INFO]: Task created successfully: {"status":"assigned","id":62,"task":"task2","userid":"1","image":"[]","updatedAt":"2025-02-12T09:36:59.635Z","createdAt":"2025-02-12T09:36:59.635Z"}
+2025-02-12 15:07:16 [WARN]: Image not found: ["task_img_1739335659435.PNG","task_img_1739335659435.PNG"]
+2025-02-12 15:07:16 [INFO]: Task deleted successfully: ID 56
+2025-02-12 15:07:27 [WARN]: Image not found: ["task_img_1739334862050.PNG"]
+2025-02-12 15:07:27 [INFO]: Task deleted successfully: ID 48
+2025-02-12 15:07:29 [WARN]: Image not found: ["task_img_1739335110171.PNG"]
+2025-02-12 15:07:29 [INFO]: Task deleted successfully: ID 49
+2025-02-12 15:07:31 [WARN]: Image not found: ["task_img_1739335113506.PNG"]
+2025-02-12 15:07:31 [INFO]: Task deleted successfully: ID 50
+2025-02-12 15:07:33 [WARN]: Image not found: ["task_img_1739335283752.PNG"]
+2025-02-12 15:07:33 [INFO]: Task deleted successfully: ID 51
+2025-02-12 15:07:35 [WARN]: Image not found: ["task_img_1739335287834.PNG"]
+2025-02-12 15:07:35 [INFO]: Task deleted successfully: ID 52
+2025-02-12 15:07:37 [WARN]: Image not found: ["task_img_1739335535862.PNG","task_img_1739335535862.PNG"]
+2025-02-12 15:07:37 [INFO]: Task deleted successfully: ID 53
+2025-02-12 15:07:39 [WARN]: Image not found: ["task_img_1739335555766.PNG","task_img_1739335555766.PNG"]
+2025-02-12 15:07:39 [INFO]: Task deleted successfully: ID 54
+2025-02-12 15:07:41 [WARN]: Image not found: ["task_img_1739335606305.PNG","task_img_1739335606305.PNG"]
+2025-02-12 15:07:41 [INFO]: Task deleted successfully: ID 55
+2025-02-12 15:10:16 [INFO]: Task marked as completed: {"id":61,"task":"task2","status":"completed","userid":1,"image":"[]","createdAt":"2025-02-12T09:32:09.000Z","updatedAt":"2025-02-12T09:40:16.227Z"}
+2025-02-12 15:10:19 [WARN]: Image not found: []
+2025-02-12 15:10:19 [INFO]: Task deleted successfully: ID 61
+2025-02-12 15:10:30 [INFO]: Task created successfully: {"status":"assigned","id":63,"task":"hi","userid":"1","image":"[]","updatedAt":"2025-02-12T09:40:30.308Z","createdAt":"2025-02-12T09:40:30.308Z"}
+2025-02-12 15:11:24 [INFO]: Task created successfully: {"id":64,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739353284124_0.5etgeloa2m.PNG\",\"task_img_1739353284124_0.5etgeloa2m.PNG\"]","updatedAt":"2025-02-12T09:41:24.134Z","createdAt":"2025-02-12T09:41:24.134Z"}
+2025-02-12 15:12:04 [INFO]: Task created successfully: {"status":"assigned","id":65,"task":"hlllll","userid":"1","image":"[]","updatedAt":"2025-02-12T09:42:04.358Z","createdAt":"2025-02-12T09:42:04.358Z"}
+2025-02-12 15:18:13 [INFO]: Task created successfully: {"status":"assigned","id":66,"task":"task3","userid":"1","image":"[]","updatedAt":"2025-02-12T09:48:13.624Z","createdAt":"2025-02-12T09:48:13.624Z"}
+2025-02-12 15:18:27 [WARN]: Duplicate image detected: sal.PNG
+2025-02-12 15:18:36 [INFO]: Task created successfully: {"id":67,"task":"My new task 6","status":"assigned","userid":"1","image":"[\"task_img_1739353716488_0.ayfeh7wivze.PNG\",\"task_img_1739353716488_0.ayfeh7wivze.PNG\"]","updatedAt":"2025-02-12T09:48:36.489Z","createdAt":"2025-02-12T09:48:36.489Z"}
+2025-02-12 15:27:54 [INFO]: Task created successfully: {"status":"assigned","id":68,"task":"task","userid":"1","image":"[]","updatedAt":"2025-02-12T09:57:54.296Z","createdAt":"2025-02-12T09:57:54.296Z"}
+2025-02-12 15:28:39 [INFO]: Task created successfully: {"status":"assigned","id":69,"task":"task1","userid":"1","image":"[]","updatedAt":"2025-02-12T09:58:39.586Z","createdAt":"2025-02-12T09:58:39.586Z"}
+2025-02-12 15:31:54 [WARN]: Image not found: []
+2025-02-12 15:31:54 [INFO]: Task deleted successfully: ID 69
+2025-02-12 15:31:57 [WARN]: Image not found: []
+2025-02-12 15:31:57 [INFO]: Task deleted successfully: ID 68
+2025-02-12 15:31:59 [WARN]: Image not found: []
+2025-02-12 15:31:59 [INFO]: Task deleted successfully: ID 66
+2025-02-12 15:32:01 [WARN]: Image not found: []
+2025-02-12 15:32:01 [INFO]: Task deleted successfully: ID 65
+2025-02-12 15:32:04 [WARN]: Image not found: []
+2025-02-12 15:32:04 [INFO]: Task deleted successfully: ID 63
+2025-02-12 15:32:06 [WARN]: Image not found: []
+2025-02-12 15:32:06 [INFO]: Task deleted successfully: ID 62
+2025-02-12 15:33:09 [INFO]: Task created successfully: {"status":"assigned","id":70,"task":"task1","userid":"1","image":"[]","updatedAt":"2025-02-12T10:03:09.137Z","createdAt":"2025-02-12T10:03:09.137Z"}
+2025-02-12 15:33:30 [WARN]: Image not found: []
+2025-02-12 15:33:30 [INFO]: Task deleted successfully: ID 70
+2025-02-12 15:33:34 [INFO]: Task created successfully: {"status":"assigned","id":71,"task":"task2","userid":"1","image":"[]","updatedAt":"2025-02-12T10:03:34.567Z","createdAt":"2025-02-12T10:03:34.567Z"}
+2025-02-12 15:36:17 [INFO]: Task updated successfully: {"id":71,"task":"task2","status":"assigned","userid":1,"image":"[]","createdAt":"2025-02-12T10:03:34.000Z","updatedAt":"2025-02-12T10:06:17.000Z"}
+2025-02-12 15:36:36 [INFO]: Task created successfully: {"status":"assigned","id":72,"task":"sneha","userid":"1","image":"[]","updatedAt":"2025-02-12T10:06:36.640Z","createdAt":"2025-02-12T10:06:36.640Z"}
+2025-02-12 15:39:09 [INFO]: Task created successfully: {"status":"assigned","id":73,"task":"hi","userid":"1","image":"[]","updatedAt":"2025-02-12T10:09:09.652Z","createdAt":"2025-02-12T10:09:09.652Z"}
+2025-02-12 15:40:14 [WARN]: Image not found: []
+2025-02-12 15:40:14 [INFO]: Task deleted successfully: ID 71
+2025-02-12 15:40:17 [WARN]: Image not found: []
+2025-02-12 15:40:17 [INFO]: Task deleted successfully: ID 72
+2025-02-12 16:50:00 [INFO]: Task created successfully: {"status":"assigned","id":74,"task":"task1","userid":"1","image":"[]","updatedAt":"2025-02-12T11:20:00.559Z","createdAt":"2025-02-12T11:20:00.559Z"}
+2025-02-12 16:50:55 [INFO]: Task created successfully: {"status":"assigned","id":75,"task":"task2","userid":"1","image":"[]","updatedAt":"2025-02-12T11:20:55.364Z","createdAt":"2025-02-12T11:20:55.364Z"}
+2025-02-12 16:51:13 [INFO]: Task created successfully: {"status":"assigned","id":76,"task":"task2","userid":"1","image":"[]","updatedAt":"2025-02-12T11:21:13.904Z","createdAt":"2025-02-12T11:21:13.904Z"}
+2025-02-12 16:51:31 [INFO]: Task created successfully: {"id":77,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739359291246_0.zs3oi39k5xi.PNG\",\"task_img_1739359291246_0.zs3oi39k5xi.PNG\"]","updatedAt":"2025-02-12T11:21:31.255Z","createdAt":"2025-02-12T11:21:31.255Z"}
+2025-02-12 16:54:49 [WARN]: Duplicate image detected: w.PNG
+2025-02-12 16:55:04 [INFO]: Task created successfully: {"id":78,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739359504058_0.m9py7cqym9j.PNG\",\"task_img_1739359504058_0.m9py7cqym9j.PNG\"]","updatedAt":"2025-02-12T11:25:04.060Z","createdAt":"2025-02-12T11:25:04.060Z"}
+2025-02-12 16:55:20 [INFO]: Task created successfully: {"id":79,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739359520161_0.c9ejzfeovue.PNG\",\"task_img_1739359520161_0.c9ejzfeovue.PNG\"]","updatedAt":"2025-02-12T11:25:20.166Z","createdAt":"2025-02-12T11:25:20.166Z"}
+2025-02-12 17:01:09 [INFO]: Task created successfully: {"status":"assigned","id":80,"task":"hi","userid":"1","image":"[]","updatedAt":"2025-02-12T11:31:09.241Z","createdAt":"2025-02-12T11:31:09.241Z"}
+2025-02-12 17:02:02 [INFO]: Task created successfully: {"id":81,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739359922287_0.bwyg0obcdsc.png\",\"task_img_1739359922287_0.bwyg0obcdsc.png\"]","updatedAt":"2025-02-12T11:32:02.292Z","createdAt":"2025-02-12T11:32:02.292Z"}
+2025-02-12 17:02:08 [INFO]: Task created successfully: {"status":"assigned","id":82,"task":"hi","userid":"1","image":"[]","updatedAt":"2025-02-12T11:32:08.060Z","createdAt":"2025-02-12T11:32:08.060Z"}
+2025-02-12 17:05:16 [INFO]: Task created successfully: {"id":83,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739360116438_0.qkks67i3co.png\",\"task_img_1739360116442_0.d7o0heoiiu5.PNG\",\"task_img_1739360116438_0.qkks67i3co.png\",\"task_img_1739360116442_0.d7o0heoiiu5.PNG\"]","updatedAt":"2025-02-12T11:35:16.447Z","createdAt":"2025-02-12T11:35:16.447Z"}
+2025-02-12 17:08:20 [WARN]: Image not found: ["task_img_1739335888744_85giapksb.PNG","task_img_1739335888745_zbufba60c.PNG","task_img_1739335888745_aq0ecs495.png","task_img_1739335888744_85giapksb.PNG","task_img_1739335888745_zbufba60c.PNG","task_img_1739335888745_aq0ecs495.png"]
+2025-02-12 17:08:20 [INFO]: Task deleted successfully: ID 57
+2025-02-12 17:08:32 [INFO]: Task created successfully: {"id":84,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739360312922_0.4d50hi7y99v.png\",\"task_img_1739360312925_0.44x11ywc9na.PNG\",\"task_img_1739360312922_0.4d50hi7y99v.png\",\"task_img_1739360312925_0.44x11ywc9na.PNG\"]","updatedAt":"2025-02-12T11:38:32.932Z","createdAt":"2025-02-12T11:38:32.932Z"}
+2025-02-12 17:08:36 [WARN]: Duplicate image detected: anime.png
+2025-02-12 17:13:26 [INFO]: Task created successfully: {"id":85,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739360606296_0.jz1rzqiwem9.png\",\"task_img_1739360606300_0.093bhm4xi1s9.PNG\",\"task_img_1739360606296_0.jz1rzqiwem9.png\",\"task_img_1739360606300_0.093bhm4xi1s9.PNG\"]","updatedAt":"2025-02-12T11:43:26.307Z","createdAt":"2025-02-12T11:43:26.307Z"}
+2025-02-12 17:13:28 [WARN]: Duplicate image detected: anime.png
+2025-02-12 17:14:38 [INFO]: Task created successfully: {"id":86,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739360678245_fs7quv3tw}.PNG\",\"task_img_1739360678245_bw56eretj}.png\",\"task_img_1739360678246_b3fec5wlc}.PNG\",\"task_img_1739360678245_fs7quv3tw}.PNG\",\"task_img_1739360678245_bw56eretj}.png\",\"task_img_1739360678246_b3fec5wlc}.PNG\"]","updatedAt":"2025-02-12T11:44:38.255Z","createdAt":"2025-02-12T11:44:38.255Z"}
+2025-02-12 17:19:17 [INFO]: Task created successfully: {"id":87,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739360957387_0.1rkbyomm3pc}.png\",\"task_img_1739360957387_0.1rkbyomm3pc}.png\"]","updatedAt":"2025-02-12T11:49:17.396Z","createdAt":"2025-02-12T11:49:17.396Z"}
+2025-02-12 17:20:02 [INFO]: Task created successfully: {"id":88,"task":"My new task 76","status":"assigned","userid":"1","image":"[\"task_img_1739361002677_0.qubojpbuxqq}.png\"]","updatedAt":"2025-02-12T11:50:02.686Z","createdAt":"2025-02-12T11:50:02.686Z"}
+2025-02-12 17:28:24 [WARN]: Image not found: ["task_img_1739335922212_g2tknyfkw.PNG","task_img_1739335922212_vx1vfqj8a.png","task_img_1739335922213_85foge5h2.PNG","task_img_1739335922212_g2tknyfkw.PNG","task_img_1739335922212_vx1vfqj8a.png","task_img_1739335922213_85foge5h2.PNG"]
+2025-02-12 17:28:24 [INFO]: Task deleted successfully: ID 58
+2025-02-12 17:28:25 [WARN]: Image not found: ["task_img_1739337751946_0.sa1ve4l3hq.PNG","task_img_1739337751946_0.sa1ve4l3hq.PNG"]
+2025-02-12 17:28:25 [INFO]: Task deleted successfully: ID 59
+2025-02-12 17:28:27 [WARN]: Image not found: ["task_img_1739351388956_0.6siosjbvqz4.PNG","task_img_1739351388956_0.6siosjbvqz4.PNG"]
+2025-02-12 17:28:27 [INFO]: Task deleted successfully: ID 60
+2025-02-12 17:28:29 [WARN]: Image not found: ["task_img_1739353284124_0.5etgeloa2m.PNG","task_img_1739353284124_0.5etgeloa2m.PNG"]
+2025-02-12 17:28:29 [INFO]: Task deleted successfully: ID 64
+2025-02-12 17:28:31 [WARN]: Image not found: ["task_img_1739353716488_0.ayfeh7wivze.PNG","task_img_1739353716488_0.ayfeh7wivze.PNG"]
+2025-02-12 17:28:31 [INFO]: Task deleted successfully: ID 67
+2025-02-12 17:28:34 [WARN]: Image not found: []
+2025-02-12 17:28:34 [INFO]: Task deleted successfully: ID 73
+2025-02-12 17:28:36 [WARN]: Image not found: []
+2025-02-12 17:28:36 [INFO]: Task deleted successfully: ID 74
+2025-02-12 17:28:38 [WARN]: Image not found: []
+2025-02-12 17:28:38 [INFO]: Task deleted successfully: ID 75
+2025-02-12 17:28:40 [WARN]: Image not found: []
+2025-02-12 17:28:40 [INFO]: Task deleted successfully: ID 76
+2025-02-12 17:28:44 [WARN]: Image not found: ["task_img_1739359291246_0.zs3oi39k5xi.PNG","task_img_1739359291246_0.zs3oi39k5xi.PNG"]
+2025-02-12 17:28:44 [INFO]: Task deleted successfully: ID 77
+2025-02-12 17:28:46 [WARN]: Image not found: ["task_img_1739359504058_0.m9py7cqym9j.PNG","task_img_1739359504058_0.m9py7cqym9j.PNG"]
+2025-02-12 17:28:46 [INFO]: Task deleted successfully: ID 78
+2025-02-12 17:28:48 [WARN]: Image not found: ["task_img_1739359520161_0.c9ejzfeovue.PNG","task_img_1739359520161_0.c9ejzfeovue.PNG"]
+2025-02-12 17:28:48 [INFO]: Task deleted successfully: ID 79
+2025-02-12 17:28:50 [WARN]: Image not found: []
+2025-02-12 17:28:50 [INFO]: Task deleted successfully: ID 80
+2025-02-12 17:28:53 [WARN]: Image not found: ["task_img_1739359922287_0.bwyg0obcdsc.png","task_img_1739359922287_0.bwyg0obcdsc.png"]
+2025-02-12 17:28:53 [INFO]: Task deleted successfully: ID 81
+2025-02-12 17:28:55 [WARN]: Image not found: []
+2025-02-12 17:28:55 [INFO]: Task deleted successfully: ID 82
+2025-02-12 17:28:57 [WARN]: Image not found: ["task_img_1739360116438_0.qkks67i3co.png","task_img_1739360116442_0.d7o0heoiiu5.PNG","task_img_1739360116438_0.qkks67i3co.png","task_img_1739360116442_0.d7o0heoiiu5.PNG"]
+2025-02-12 17:28:57 [INFO]: Task deleted successfully: ID 83
+2025-02-12 17:36:20 [INFO]: Task created successfully: {"status":"assigned","id":89,"task":"hi","userid":"1","image":"[]","updatedAt":"2025-02-12T12:06:20.376Z","createdAt":"2025-02-12T12:06:20.376Z"}
+2025-02-12 17:36:47 [WARN]: Duplicate image detected: anime.png
+2025-02-12 17:36:55 [INFO]: Task created successfully: {"id":90,"task":"My new task 8","status":"assigned","userid":"1","image":"[\"task_img_1739362015773_0.n5g6rt5k51}.PNG\"]","updatedAt":"2025-02-12T12:06:55.775Z","createdAt":"2025-02-12T12:06:55.775Z"}
+2025-02-13 11:08:42 [INFO]: Task created successfully: {"id":91,"task":"My new task 8","status":"assigned","userid":"1","image":"[\"task_img_1739425122425_0.kj5x0cejhul}.PNG\",\"task_img_1739425122425_0.ph1z6dkl0l}.png\"]","updatedAt":"2025-02-13T05:38:42.435Z","createdAt":"2025-02-13T05:38:42.435Z"}
+2025-02-13 11:56:40 [WARN]: Invalid file type: wp8238830.webp
+2025-02-13 11:57:11 [WARN]: Invalid file type: wp8238830.webp
+2025-02-13 11:57:23 [WARN]: Invalid file type: wp8238830.webp
+2025-02-13 11:57:38 [WARN]: Invalid file type: wp8238830.webp
+2025-02-13 14:09:24 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-13 14:09:28 [WARN]: Image not found: ["task_img_1739360312922_0.4d50hi7y99v.png","task_img_1739360312925_0.44x11ywc9na.PNG","task_img_1739360312922_0.4d50hi7y99v.png","task_img_1739360312925_0.44x11ywc9na.PNG"]
+2025-02-13 14:09:28 [INFO]: Task deleted successfully: ID 84
+2025-02-13 14:09:31 [WARN]: Image not found: []
+2025-02-13 14:09:31 [INFO]: Task deleted successfully: ID 89
+2025-02-13 14:12:36 [INFO]: Task created successfully: {"status":"assigned","id":92,"task":"hi","userid":"1","image":"[]","updatedAt":"2025-02-13T08:42:36.951Z","createdAt":"2025-02-13T08:42:36.951Z"}
+2025-02-13 14:20:04 [INFO]: Task created successfully: {"status":"assigned","id":93,"task":"hi","userid":"1","image":"[]","updatedAt":"2025-02-13T08:50:04.660Z","createdAt":"2025-02-13T08:50:04.660Z"}
+2025-02-13 14:20:42 [WARN]: Image not found: []
+2025-02-13 14:20:42 [INFO]: Task deleted successfully: ID 93
+2025-02-13 14:21:25 [INFO]: Task created successfully: {"id":94,"task":"My new task 8","status":"assigned","userid":"1","image":"[\"task_img_1739436685579_0.xyqtd7l5kr}.PNG\"]","updatedAt":"2025-02-13T08:51:25.582Z","createdAt":"2025-02-13T08:51:25.582Z"}
+2025-02-13 14:25:12 [WARN]: Duplicate image detected: proje.PNG
+2025-02-13 14:25:21 [INFO]: Task created successfully: {"id":95,"task":"My new task 9","status":"assigned","userid":"1","image":"[\"task_img_1739436921979_0.8vpst4rveon}.png\"]","updatedAt":"2025-02-13T08:55:21.983Z","createdAt":"2025-02-13T08:55:21.983Z"}
+2025-02-13 14:26:43 [INFO]: Task marked as completed: {"id":85,"task":"My new task 76","status":"completed","userid":1,"image":"[\"task_img_1739360606296_0.jz1rzqiwem9.png\",\"task_img_1739360606300_0.093bhm4xi1s9.PNG\",\"task_img_1739360606296_0.jz1rzqiwem9.png\",\"task_img_1739360606300_0.093bhm4xi1s9.PNG\"]","createdAt":"2025-02-12T11:43:26.000Z","updatedAt":"2025-02-13T08:56:43.971Z"}
+2025-02-13 14:26:45 [INFO]: Task marked as completed: {"id":86,"task":"My new task 76","status":"completed","userid":1,"image":"[\"task_img_1739360678245_fs7quv3tw}.PNG\",\"task_img_1739360678245_bw56eretj}.png\",\"task_img_1739360678246_b3fec5wlc}.PNG\",\"task_img_1739360678245_fs7quv3tw}.PNG\",\"task_img_1739360678245_bw56eretj}.png\",\"task_img_1739360678246_b3fec5wlc}.PNG\"]","createdAt":"2025-02-12T11:44:38.000Z","updatedAt":"2025-02-13T08:56:45.263Z"}
+2025-02-13 14:26:51 [INFO]: Task marked as completed: {"id":86,"task":"My new task 76","status":"completed","userid":1,"image":"[\"task_img_1739360678245_fs7quv3tw}.PNG\",\"task_img_1739360678245_bw56eretj}.png\",\"task_img_1739360678246_b3fec5wlc}.PNG\",\"task_img_1739360678245_fs7quv3tw}.PNG\",\"task_img_1739360678245_bw56eretj}.png\",\"task_img_1739360678246_b3fec5wlc}.PNG\"]","createdAt":"2025-02-12T11:44:38.000Z","updatedAt":"2025-02-13T08:56:45.000Z"}
+2025-02-13 14:34:48 [INFO]: Task created successfully: {"status":"assigned","id":96,"task":"hi","userid":"1","image":"[\"task_img_1739437488163_0.19bkzb31zhek}.png\"]","updatedAt":"2025-02-13T09:04:48.169Z","createdAt":"2025-02-13T09:04:48.169Z"}
+2025-02-13 14:37:53 [INFO]: Task created successfully: {"status":"assigned","id":97,"task":"newtask","userid":"1","image":"[\"task_img_1739437673469_0.pldygkyem7b}.jpg\"]","updatedAt":"2025-02-13T09:07:53.475Z","createdAt":"2025-02-13T09:07:53.475Z"}
+2025-02-13 14:40:06 [INFO]: Task created successfully: {"status":"assigned","id":98,"task":"name","userid":"1","image":"[\"task_img_1739437806294_0.au59r2lnuxc}.jpg\"]","updatedAt":"2025-02-13T09:10:06.301Z","createdAt":"2025-02-13T09:10:06.301Z"}
+2025-02-13 14:40:34 [WARN]: Image not found: ["task_img_1739360606296_0.jz1rzqiwem9.png","task_img_1739360606300_0.093bhm4xi1s9.PNG","task_img_1739360606296_0.jz1rzqiwem9.png","task_img_1739360606300_0.093bhm4xi1s9.PNG"]
+2025-02-13 14:40:34 [INFO]: Task deleted successfully: ID 85
+2025-02-13 14:40:36 [WARN]: Image not found: ["task_img_1739360678245_fs7quv3tw}.PNG","task_img_1739360678245_bw56eretj}.png","task_img_1739360678246_b3fec5wlc}.PNG","task_img_1739360678245_fs7quv3tw}.PNG","task_img_1739360678245_bw56eretj}.png","task_img_1739360678246_b3fec5wlc}.PNG"]
+2025-02-13 14:40:36 [INFO]: Task deleted successfully: ID 86
+2025-02-13 14:40:38 [WARN]: Image not found: ["task_img_1739360957387_0.1rkbyomm3pc}.png","task_img_1739360957387_0.1rkbyomm3pc}.png"]
+2025-02-13 14:40:38 [INFO]: Task deleted successfully: ID 87
+2025-02-13 14:40:49 [WARN]: Image not found: ["task_img_1739361002677_0.qubojpbuxqq}.png"]
+2025-02-13 14:40:49 [INFO]: Task deleted successfully: ID 88
+2025-02-13 14:40:51 [WARN]: Image not found: ["task_img_1739362015773_0.n5g6rt5k51}.PNG"]
+2025-02-13 14:40:51 [INFO]: Task deleted successfully: ID 90
+2025-02-13 14:40:54 [WARN]: Image not found: ["task_img_1739425122425_0.kj5x0cejhul}.PNG","task_img_1739425122425_0.ph1z6dkl0l}.png"]
+2025-02-13 14:40:54 [INFO]: Task deleted successfully: ID 91
+2025-02-13 14:40:55 [WARN]: Image not found: []
+2025-02-13 14:40:55 [INFO]: Task deleted successfully: ID 92
+2025-02-13 14:40:59 [WARN]: Image not found: ["task_img_1739436685579_0.xyqtd7l5kr}.PNG"]
+2025-02-13 14:40:59 [INFO]: Task deleted successfully: ID 94
+2025-02-13 14:41:01 [WARN]: Image not found: ["task_img_1739436921979_0.8vpst4rveon}.png"]
+2025-02-13 14:41:01 [INFO]: Task deleted successfully: ID 95
+2025-02-13 14:41:20 [INFO]: Task created successfully: {"id":99,"task":"todo","status":"assigned","userid":"1","image":"[\"task_img_1739437880072_0.r05yg3fvg8k}.png\"]","updatedAt":"2025-02-13T09:11:20.079Z","createdAt":"2025-02-13T09:11:20.079Z"}
+2025-02-13 14:42:04 [INFO]: Task created successfully: {"status":"assigned","id":100,"task":"goodmorning","userid":"1","image":"[\"task_img_1739437924126_0.lhddh547lxo}.PNG\"]","updatedAt":"2025-02-13T09:12:04.129Z","createdAt":"2025-02-13T09:12:04.129Z"}
+2025-02-13 15:20:34 [INFO]: Task created successfully: {"status":"assigned","id":101,"task":"task2","userid":"1","image":"[\"task_img_1739440234657_0.am0704mm9s4}.png\",\"task_img_1739440234659_0.rs7bn5e7br}.png\"]","updatedAt":"2025-02-13T09:50:34.668Z","createdAt":"2025-02-13T09:50:34.668Z"}
+2025-02-13 16:44:17 [INFO]: Task created successfully: {"status":"assigned","id":102,"task":"task2","userid":"1","image":"[\"task_img_1739445257628_0.2tkthtvnsyg}.png\"]","updatedAt":"2025-02-13T11:14:17.641Z","createdAt":"2025-02-13T11:14:17.641Z"}
+2025-02-13 16:45:03 [WARN]: Duplicate image detected: category exist bug.png
+2025-02-13 16:51:32 [INFO]: Task created successfully: {"status":"assigned","id":103,"task":"task","userid":"1","image":"[\"task_img_1739445692684_0.vmdv7fi32up}.PNG\",\"task_img_1739445692685_0.ii10u5q67xh}.png\"]","updatedAt":"2025-02-13T11:21:32.709Z","createdAt":"2025-02-13T11:21:32.709Z"}
+2025-02-13 17:01:59 [INFO]: Task created successfully: {"status":"assigned","id":104,"task":"task3","userid":"1","image":"[]","updatedAt":"2025-02-13T11:31:59.851Z","createdAt":"2025-02-13T11:31:59.851Z"}
+2025-02-13 17:09:30 [WARN]: Duplicate image detected: anime.png
+2025-02-13 17:09:42 [INFO]: Task created successfully: {"id":105,"task":"todo","status":"assigned","userid":"1","image":"[\"task_img_1739446782790_0.jy7262kz0i}.PNG\",\"task_img_1739446782792_0.s9149h9sjzg}.PNG\"]","updatedAt":"2025-02-13T11:39:42.796Z","createdAt":"2025-02-13T11:39:42.796Z"}
+2025-02-13 17:56:15 [INFO]: Creating task for user ID: 1, Task: My task
+2025-02-13 17:56:17 [INFO]: Creating task for user ID: 1, Task: My task
+2025-02-13 17:56:17 [ERROR]: Error processing file: sal.PNG
+2025-02-13 18:00:35 [INFO]: Creating task for user ID: 1, Task: My task 1
+2025-02-13 18:05:44 [INFO]: Creating task for user ID: 1, Task: My task 1
+2025-02-13 18:05:44 [ERROR]: Error processing file: task_img_1739449835757_0.epcgdfzdgdq.PNG
+2025-02-13 18:07:55 [INFO]: Creating task for user ID: 1, Task: task1
+2025-02-14 10:14:12 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:36:51 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:36:51 [ERROR]: Error processing file: pp.PNG
+2025-02-14 10:37:18 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:37:18 [ERROR]: Error processing file: pp.PNG
+2025-02-14 10:37:25 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:37:25 [ERROR]: Error processing file: w.PNG
+2025-02-14 10:37:46 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:38:33 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:38:33 [ERROR]: Error processing file: task_img_1739509666023_0.67o9cyzrrm9.PNG
+2025-02-14 10:40:16 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:41:14 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:41:19 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:41:21 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:41:25 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:43:19 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:43:19 [INFO]: Duplicate image detected, using existing file: 58ee6ef9dad9abc8c79534b247b321e53e4714b563c971f3f0f115e894a4dd8b.png
+2025-02-14 10:43:35 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:43:35 [INFO]: Duplicate image detected, using existing file: 972a1ce7505c5d8de05f0ae0a30ced0bb40086247cc10e951ffea009a58f3bd4.png
+2025-02-14 10:44:04 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 10:44:04 [INFO]: Duplicate image detected, using existing file: 972a1ce7505c5d8de05f0ae0a30ced0bb40086247cc10e951ffea009a58f3bd4.png
+2025-02-14 10:44:33 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-14 14:02:38 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 14:02:38 [ERROR]: Error processing file: task_img_1739509666023_0.67o9cyzrrm9.PNG - The "cb" argument must be of type function. Received undefined
+2025-02-14 14:02:49 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 14:02:49 [ERROR]: Error processing file: dou.PNG - The "cb" argument must be of type function. Received undefined
+2025-02-14 14:02:49 [ERROR]: Error processing file: task_img_1739360606296_0.jz1rzqiwem9.png - The "cb" argument must be of type function. Received undefined
+2025-02-14 14:23:13 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-02-14 15:02:43 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 15:09:21 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 15:09:25 [INFO]: Creating task for user ID: 1, Task: My task 2
+2025-02-14 15:09:25 [ERROR]: Error processing file: dou.PNG
+2025-02-14 15:10:01 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:14:26 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:14:26 [ERROR]: Error processing file: task_img_1739526001896_0.kjz5frspk9o.jpg
+2025-02-14 15:14:45 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:14:45 [ERROR]: Error processing file: task_img_1739526001896_0.kjz5frspk9o.jpg
+2025-02-14 15:22:22 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:22:30 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:22:30 [ERROR]: Error processing file: task_img_1739526001896_0.kjz5frspk9o.jpg
+2025-02-14 15:24:39 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:24:53 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:24:55 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:25:57 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:26:15 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:26:36 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:26:37 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:27:58 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:28:00 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 15:28:00 [ERROR]: Error processing file: d.PNG
+2025-02-14 17:38:38 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 17:39:02 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 17:39:02 [ERROR]: Error processing file: task_img_1739534918601_0.yj4xtwbxars.PNG
+2025-02-14 17:39:17 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 17:39:17 [ERROR]: Error processing file: d.PNG
+2025-02-14 17:39:29 [INFO]: Creating task for user ID: 1, Task: My task 3
+2025-02-14 17:39:29 [ERROR]: Error processing file: task_img_1739534918601_0.yj4xtwbxars.PNG
+2025-02-14 17:39:45 [INFO]: Creating task for user ID: 1, Task: My task 4
+2025-02-14 17:39:45 [ERROR]: Error processing file: d.PNG
+2025-02-14 18:10:43 [INFO]: Refresh token successfully refreshed
+2025-02-17 14:02:34 [INFO]: Creating task for user ID: 1, Task: My task 4
+2025-02-17 14:02:50 [INFO]: Creating task for user ID: 1, Task: My task 4
+2025-02-17 14:02:57 [INFO]: Creating task for user ID: 1, Task: My task 4
+2025-02-17 14:02:59 [INFO]: Creating task for user ID: 1, Task: My task 4
+2025-02-17 14:05:41 [INFO]: Creating task for user ID: 1, Task: My task 4
+2025-02-17 14:05:41 [ERROR]: Error processing file: d.PNG
+2025-02-17 14:05:53 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-02-17 14:05:53 [ERROR]: Error processing file: d.PNG
+2025-02-17 14:06:12 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-02-17 14:06:12 [ERROR]: Error processing file: ee.PNG
+2025-02-17 14:06:26 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-02-17 14:06:26 [ERROR]: Error processing file: ee.PNG
+2025-03-25 11:41:30 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-03-25 11:42:36 [INFO]: Creating task for user ID: 1, Task: new
+2025-03-25 11:43:01 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 11:43:06 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 11:43:06 [ERROR]: Error processing file: ee.PNG
+2025-03-25 11:44:31 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 11:44:31 [ERROR]: Invalid file type: wp8238830 - Copy.webp. Allowed extensions: .jpg, .jpeg, .png, .gif
+2025-03-25 11:45:39 [INFO]: Creating task for user ID: 1, Task: new task
+2025-03-25 11:45:39 [ERROR]: Invalid file type: wp8238830 - Copy.webp. Allowed extensions: .jpg, .jpeg, .png, .gif
+2025-03-25 12:19:23 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 12:19:31 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 12:19:31 [ERROR]: Error processing file: task_img_1742883156580_0.geqemvvkfsh.png
+2025-03-25 12:19:37 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 12:19:37 [ERROR]: Error processing file: task_img_1742883156580_0.geqemvvkfsh.png
+2025-03-25 12:33:27 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 12:38:18 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 12:39:10 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 13:42:00 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 13:43:46 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 13:44:20 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 13:44:30 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 14:41:32 [INFO]: Refresh token successfully refreshed
+2025-03-25 15:02:27 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 15:03:16 [INFO]: Creating task for user ID: 1, Task: My task 5
+2025-03-25 15:04:51 [INFO]: Creating task for user ID: 1, Task: My task 32
+2025-03-25 15:21:05 [INFO]: Creating task for user ID: 1, Task: My task 34
+2025-03-25 15:33:29 [INFO]: Creating task for user ID: 1, Task: My task 34
+2025-03-25 17:27:03 [INFO]: Creating task for user ID: 1, Task: My task 34
+2025-03-25 17:27:03 [ERROR]: Cannot set headers after they are sent to the client
+2025-03-25 17:28:39 [INFO]: Creating task for user ID: 1, Task: My task 34
+2025-03-25 17:28:39 [ERROR]: Cannot set headers after they are sent to the client
+2025-03-25 17:55:45 [INFO]: Creating task for user ID: 1, Task: My task 34
+2025-03-26 11:09:04 [INFO]: Creating task for user ID: 1, Task: My task 34
+2025-04-09 11:30:04 [ERROR]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2025-04-09 11:32:17 [ERROR]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2025-04-09 11:33:37 [ERROR]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2025-04-09 11:37:15 [ERROR]: connect ETIMEDOUT 10.10.1.177:4566
+2025-05-27 10:35:44 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-05-27 10:36:26 [INFO]: User logged out successfully
+2025-05-27 10:36:38 [INFO]: User logged in: snehasakthi02@gmail.com
+2025-05-27 10:42:47 [INFO]: User logged out successfully
+2025-05-27 10:43:38 [ERROR]: connect ETIMEDOUT 10.10.1.177:4566

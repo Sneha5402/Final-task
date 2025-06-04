@@ -25,6 +25,10 @@ const Task = sequelize.define('Tasks', {
         key: 'userid'
       },
     },
+    image: { 
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
 
 }, {
     timestamps: true,  

@@ -1,22 +1,24 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const { generateTokens } = require('../utils/tokens');
+const logger = require('../utils/logger'); 
 
 // Signup
 const signup = async (req, res) => {
     const { username, email, password, confirmPassword } = req.body;
 
     if (password !== confirmPassword) {
+        logger.warn('Signup attempt failed: Passwords do not match');
         return res.status(400).json({
             status: 'error',
             message: 'Passwords do not match',
         });
     }
+
     try {
-        // Save user data to the database
         const newUser = await User.create({
             username,
-            email: email,
+            email,
             password,
         });
         console.log('User created:', newUser);
@@ -26,6 +28,7 @@ const signup = async (req, res) => {
             redirect: '/login',
         });
     } catch (error) {
+        logger.error(`Signup failed for ${email}: ${error.message}`);
         res.status(409).json({
             status: 'error',
             message: 'User already exists',
@@ -38,6 +41,7 @@ const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
+        logger.warn('Login attempt failed: Missing email or password');
         return res.status(400).json({
             status: 'error',
             message: 'Email and password are required',
@@ -48,6 +52,7 @@ const login = async (req, res) => {
         const user = await User.findOne({ where: { email, isDeleted: 0 } });
 
         if (!user) {
+            logger.warn(`Login attempt failed: User not found (${email})`);
             return res.status(404).json({
                 status: 'error',
                 message: 'User not found',
@@ -57,19 +62,20 @@ const login = async (req, res) => {
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
+            logger.warn(`Login attempt failed: Invalid password (${email})`);
             return res.status(401).json({
                 status: 'error',
                 message: 'Invalid password',
             });
         } else {
-            // Generate tokens
             const { accessToken, refreshToken } = generateTokens();
 
             // Set tokens as cookies
             res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1 * 60 * 1000 });
-            res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
+            res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
             res.cookie('userid', user.userid, { httpOnly: true });
 
+            logger.info(`User logged in: ${email}`);
             res.status(200).json({
                 status: 'success',
                 message: 'Login successful',
@@ -77,6 +83,7 @@ const login = async (req, res) => {
             });
         }
     } catch (error) {
+        logger.error(`Error during login (${email}): ${error.message}`);
         res.status(500).json({
             status: 'error',
             message: 'Error during login, please try again later',
@@ -98,6 +105,7 @@ const refreshToken = (req, res) => {
     const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
+        logger.warn('Token refresh failed: No refresh token provided');
         return res.status(401).json({
             status: 'error',
             message: 'Refresh token is required',
@@ -107,6 +115,7 @@ const refreshToken = (req, res) => {
 
     try {
         if (!isValidRefreshToken(refreshToken)) {
+            logger.warn('Token refresh failed: Invalid refresh token');
             return res.status(403).json({
                 status: 'error',
                 message: 'Invalid refresh token',
@@ -116,31 +125,34 @@ const refreshToken = (req, res) => {
 
         const { refreshToken: newRefreshToken } = generateTokens();
 
-        // Set the new token as a cookie
         res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
 
-        console.log('Tokens refreshed successfully');
-        return res.status(200).json({
+        logger.info('Refresh token successfully refreshed');
+        res.status(200).json({
             status: 'success',
             message: 'Token refreshed',
         });
     } catch (error) {
-        return res.status(500).json({
+        logger.error(`Error during token refresh: ${error.message}`);
+        res.status(500).json({
             status: 'error',
             message: 'An error occurred while processing the refresh token',
         });
     }
 };
 
+// Logout
 const logout = (req, res) => {
     const { refreshToken } = req.cookies;
 
     if (!refreshToken) {
+        logger.warn('Logout failed: No refresh token provided');
         return res.status(400).json({
             status: "failure",
             message: "Refresh token is required for logout"
         });
-    } else{
+    } else {
+        logger.info('User logged out successfully');
         res.redirect('/login');
     }
 };
