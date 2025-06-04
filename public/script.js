@@ -7,12 +7,65 @@ document.addEventListener('DOMContentLoaded', () => {
     const allCount = document.getElementById('allCount');
     const assignedCount = document.getElementById('assignedCount');
     const completedCount = document.getElementById('completedCount');
+    const taskForm = document.querySelector('.text');
+    const taskInput = document.getElementById('task');
+    const taskImageInput = document.getElementById('taskImage');
 
     let tasks = [];
 
     if (loadingSpinner) {
         loadingSpinner.style.display = 'block';
     }
+
+
+    // Prevent default form submission and handle with JavaScript
+    taskForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const taskText = taskInput.value.trim();
+        if (!taskText) {
+            alert('Task cannot be empty!');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('task', taskText);
+
+        if (taskImageInput && taskImageInput.files && taskImageInput.files.length > 0) {
+            for (const file of taskImageInput.files) {
+                formData.append('image', file);
+            }
+        }
+
+        // Send request to backend
+        fetch('http://localhost:3001/api/tasks/create', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include',
+        })
+            .then(response => response.json())
+            .then(newTask => {
+                if (newTask.status === 'success' && newTask.task) {
+                    tasks.push({
+                        id: newTask.task.id,
+                        task: newTask.task.task,
+                        status: newTask.task.status,
+                        image: Array.isArray(newTask.task.image) ? newTask.task.image : [newTask.task.image],
+                    });
+                    // Re-render task list
+                    renderTasks('all');
+
+                    // Clear input fields
+                    taskInput.value = '';
+                    taskImageInput.value = '';
+                } else {
+                    console.error('Error adding task:', newTask.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+
 
     fetchTasks();
     // Function to fetch tasks
@@ -30,13 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(fetchedTasks => {
-                if (fetchedTasks.status === 'success') { 
+                if (fetchedTasks.status === 'success') {
                     tasks = fetchedTasks.data;
                     renderTasks('all');
                 } else {
                     throw new Error('Failed to fetch tasks');
                 }
-    
+
                 if (loadingSpinner) {
                     loadingSpinner.style.display = 'none';
                 }
@@ -49,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    
+
     // Function to render tasks based on the selected filter
     function renderTasks(filter) {
         taskList.innerHTML = '';
@@ -67,8 +120,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.classList.add('completed');
             }
 
+
+            let imageHTML = '';
+            if (task.image && task.image.length > 0) {
+                try {
+                    const images = JSON.parse(task.image); // Parse JSON string if it's an array
+                    if (Array.isArray(images) && images.length > 0) {
+                        imageHTML = `<img src="http://localhost:3001/uploads/${images[0]}" class="task-image">`;
+                    }
+                } catch (error) {
+                    console.error('Error parsing image data:', error);
+                }
+            }
+
             li.innerHTML = `
-                <span class="task-name">${task.task}</span>
+                        <span class="task-name">${task.task}</span>
+            ${imageHTML}
                 <i class="fas fa-check complete-btn"></i>
                 <i class="fas fa-edit edit-btn"></i>
                 <i class="fas fa-trash delete-btn"></i>
@@ -239,6 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    setTimeout(handleTokenRefresh, 2 * 60 * 1000);
-    setInterval(handleTokenRefresh, 50 * 1000);
+    setTimeout(handleTokenRefresh, 3 * 60 * 60 * 1000);
+    setInterval(handleTokenRefresh, 5 * 60 * 60 * 1000);
 });
